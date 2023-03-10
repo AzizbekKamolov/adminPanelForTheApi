@@ -18,13 +18,12 @@ class AuthController extends Controller
      */
     public function login(){
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
-            $user = Auth::user();
-            $success['token'] =  $user->createToken('MyLaravelApp')-> accessToken;
-            $success['userId'] = $user->id;
-            return response()->json(['success' => $success], $this-> successStatus);
+            $data['user'] = Auth::user();
+            $data['token'] =  $data['user']->createToken('MyLaravelApp')-> accessToken;
+            return successResponse($data);
         }
         else{
-            return response()->json(['error'=>'Unauthorised'], 401);
+            return successResponse([], "Login yoki parol xato", 401);
         }
     }
 
@@ -69,5 +68,10 @@ class AuthController extends Controller
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this-> successStatus);
+    }
+    public function logout(){
+        $user = Auth::user()->token();
+        $user->revoke();
+        return successResponse([], "Muvaffaqiyatli tizimidan chiqdingiz");
     }
 }

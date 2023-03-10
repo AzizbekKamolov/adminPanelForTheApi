@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\PermissionController;
+use App\Http\Controllers\Api\Admin\RoleController;
+use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,11 +17,38 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('notAuthorized', function (){
+    return successResponse([], "Ro'yxatdan o'tmagansiz", 401);
+})->name('notAuthorized');
 
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('register', [AuthController::class, 'register']);
+Route::group(['middleware' => 'authorizedUsers'], function(){
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('register', [AuthController::class, 'register']);
+});
 
 Route::group(['middleware' => 'auth:api'], function(){
+    Route::get('logout', [AuthController::class, 'logout']);
     Route::post('user-details', [AuthController::class, 'userDetails']);
+
+    //Permissions
+    Route::get('/permissions', [PermissionController::class, 'index']);
+    Route::post('/permissions', [PermissionController::class, 'store']);
+    Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit']);
+    Route::put('/permissions/{permission}', [PermissionController::class, 'update']);
+    Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy']);
+
+    //Roles
+    Route::get('/roles', [RoleController::class, 'index']);
+    Route::post('/roles', [RoleController::class, 'store']);
+    Route::get('/roles/{role}/edit', [RoleController::class, 'edit']);
+    Route::put('/roles/{role}', [RoleController::class, 'update']);
+    Route::delete('/roles/{role}', [RoleController::class, 'destroy']);
+
+    //Users
+    Route::get('/users', [UserController::class, 'index']);
+    Route::post('/users', [UserController::class, 'store']);
+    Route::get('/users/{user}/edit', [UserController::class, 'edit']);
+    Route::put('/users/{user}', [UserController::class, 'update']);
+    Route::delete('/users/{user}', [UserController::class, 'destroy']);
 });
