@@ -33,7 +33,7 @@ class PermissionController extends Controller
         }
         $permission = Permission::create([
             'name' => $data->validate()['name'],
-            'guard_name' => 'App\Http\Models\User'
+            'guard_name' => 'api'
         ]);
         return successResponse($permission);
     }

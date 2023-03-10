@@ -32,23 +32,24 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('user-details', [AuthController::class, 'userDetails']);
 
     //Permissions
-    Route::get('/permissions', [PermissionController::class, 'index'])->middleware('can:permission.index');
-    Route::post('/permissions', [PermissionController::class, 'store']);
-    Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit']);
-    Route::put('/permissions/{permission}', [PermissionController::class, 'update']);
-    Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy']);
+    Route::get('/permissions', [PermissionController::class, 'index'])->can('permission.index');
+    Route::post('/permissions', [PermissionController::class, 'store'])->can('permission.store');
+    Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit'])->can('permission.edit');
+    Route::put('/permissions/{permission}', [PermissionController::class, 'update'])->can('permission.update');
+    Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy'])->can('permission.destroy');
 
     //Roles
-    Route::get('/roles', [RoleController::class, 'index']);
-    Route::post('/roles', [RoleController::class, 'store']);
-    Route::get('/roles/{role}/edit', [RoleController::class, 'edit']);
-    Route::put('/roles/{role}', [RoleController::class, 'update']);
-    Route::delete('/roles/{role}', [RoleController::class, 'destroy']);
+    Route::get('/roles', [RoleController::class, 'index'])->can('role.index');
+    Route::post('/roles', [RoleController::class, 'store'])->can('role.store');
+    Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->can('role.edit');
+    Route::put('/roles/{role}', [RoleController::class, 'update'])->can('role.update');
+    Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->can('role.destroy');
 
     //Users
-    Route::get('/users', [UserController::class, 'index']);
-    Route::post('/users', [UserController::class, 'store']);
-    Route::get('/users/{user}/edit', [UserController::class, 'edit']);
-    Route::put('/users/{user}', [UserController::class, 'update']);
-    Route::delete('/users/{user}', [UserController::class, 'destroy']);
+    Route::get('/users', [UserController::class, 'index'])->can('user.index');
+    Route::post('/users', [UserController::class, 'store'])->can('user.store');
+    Route::get('/users/{user}/show', [UserController::class, 'show'])->can('user.show');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
+    Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.destroy');
 });
