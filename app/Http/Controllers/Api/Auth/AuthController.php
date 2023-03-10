@@ -66,8 +66,10 @@ class AuthController extends Controller
      */
     public function userDetails()
     {
-        $user = Auth::user();
-        return response()->json(['success' => $user], $this-> successStatus);
+        $user = User::where('id', \auth()->user()->id)->with('roles', function ($query){
+            $query->select('id', 'name')->with('permissions:id,name');
+        })->first();
+        return successResponse($user);
     }
     public function logout(){
         $user = Auth::user()->token();

@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('user-details', [AuthController::class, 'userDetails']);
 
     //Permissions
-    Route::get('/permissions', [PermissionController::class, 'index']);
+    Route::get('/permissions', [PermissionController::class, 'index'])->middleware('can:permission.index');
     Route::post('/permissions', [PermissionController::class, 'store']);
     Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit']);
     Route::put('/permissions/{permission}', [PermissionController::class, 'update']);
