@@ -34,7 +34,7 @@ class RoleController extends Controller
             return errorResponse($data->errors());
         }
         $role = Role::create([
-            'name' => $data->validate()['name'],
+            'name' => $request->name,
             'guard_name' => 'api'
         ]);
         $role->syncPermissions($request->permissions);
