@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Role;
 use App\Models\Admin\UserPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -50,12 +51,13 @@ class AuthController extends Controller
           'login' => $request->login,
           'password' => Hash::make($request->password),
        ]);
+        $role = Role::where('name', 'simpleUser')->first();
+        $user->assignRole($role);
         UserPassword::create([
             'user_id' => $user->id,
             'content' => encrypt($request->password)
         ]);
         $token =  $user->createToken('MyLaravelApp')->accessToken;
-        \auth()->login($user);
         return response()->json([
             'user' => $user,
             'token' => $token,

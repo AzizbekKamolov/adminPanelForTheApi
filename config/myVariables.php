@@ -11,9 +11,9 @@ return [
           500 => "внутренняя ошибка сервера",
       ],
       "uz" => [
-          400 => "xato so'rov",
+          400 => "Xato so'rov",
           401 => "Tizimda ro'yxatdan o'tmagansiz",
-          403 => "ruxsat yo'q",
+          403 => "Ruxsat yo'q",
           404 => "Sahifa topilmadi",
           405 => "So'rov metodi xato",
           500 => "Server xatosi",
