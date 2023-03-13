@@ -52,15 +52,23 @@ class Handler extends ExceptionHandler
 //                    return response()->json([
 //                        'error' => 'Entry for '.str_replace('App', '', $e->getModel()).' not found'], 404);
 //                }
-                $arr = [400, 401, 403, 404];
-                $messages = [
-                    404 => "Sahifa topilmadi",
-                    403 => "ruxsat yo'q",
-                ];
-                if (in_array($e->getStatusCode(), $arr)) {
-                    return errorResponse("", $messages[$e->getStatusCode()], $e->getStatusCode());
+                if (auth()->check()){
+                    $langs = ['uz', 'ru', 'en'];
+                    if (in_array(app()->getLocale(), $langs)){
+                        $lang = app()->getLocale();
+                    }else{
+                        $lang = 'uz';
+                    }
+                    $arr = [400, 401, 403, 404, 405, 500];
+                    $code = $e->getStatusCode();
+
+                    if (in_array($code, $arr)) {
+                        return response()->json([
+                            'message' => config('myVariables.messages')[$lang][$code],
+                            'code' => $code
+                        ]);
+                    }
                 }
-//                return errorResponse("Bu amalni bajarish uchun ruxsat yo'q", 'error', $id);
             }
         });
     }
