@@ -13,7 +13,13 @@ class UserController extends Controller
 {
 
     public function getPermissions(){
-        return successResponse(auth()->user()->getAllPermissions()->toArray());
+        $users = auth()->user()->getAllPermissions()->toArray();
+        $data = [];
+        foreach ($users as $user){
+            $a = explode('.',$user['name']);
+            $data[$a[0].'s'][] = $user['name'];
+        }
+        return successResponse($data);
     }
     public function index(){
         $users = User::select('id', 'name', 'email')->orderBy('name', 'ASC')->with('roles', function ($query){

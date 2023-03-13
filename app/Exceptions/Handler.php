@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
 //                    return response()->json([
 //                        'error' => 'Entry for '.str_replace('App', '', $e->getModel()).' not found'], 404);
 //                }
-                if (auth()->check()){
+                if (auth()->check() && $this->isHttpException($e)){
                     $langs = ['uz', 'ru', 'en'];
                     if (in_array(app()->getLocale(), $langs)){
                         $lang = app()->getLocale();
@@ -60,14 +60,14 @@ class Handler extends ExceptionHandler
                         $lang = 'uz';
                     }
                     $arr = [400, 401, 403, 404, 405, 500];
-                    $code = $e->getStatusCode();
-
-                    if (in_array($code, $arr)) {
-                        return response()->json([
-                            'message' => config('myVariables.messages')[$lang][$code],
-                            'code' => $code
-                        ]);
-                    }
+                        $code = $e->getStatusCode();
+                        dd($request->id);
+                        if (in_array($code, $arr)) {
+                            return response()->json([
+                                'message' => config('myVariables.messages')[$lang][$code],
+                                'code' => $code
+                            ]);
+                        }
                 }
             }
         });
