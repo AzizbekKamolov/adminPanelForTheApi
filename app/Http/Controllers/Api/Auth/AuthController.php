@@ -57,6 +57,7 @@ class AuthController extends Controller
             'user_id' => $user->id,
             'content' => encrypt($request->password)
         ]);
+
         $token =  $user->createToken('MyLaravelApp')->accessToken;
         return response()->json([
             'user' => $user,
