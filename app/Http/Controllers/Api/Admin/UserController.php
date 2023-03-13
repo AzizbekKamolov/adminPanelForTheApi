@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
+    public function getPermissions(){
+        return successResponse(auth()->user()->getAllPermissions()->toArray());
+    }
     public function index(){
         $users = User::select('id', 'name', 'email')->orderBy('name', 'ASC')->with('roles', function ($query){
             $query->select('id', 'name')->with('permissions:id,name');

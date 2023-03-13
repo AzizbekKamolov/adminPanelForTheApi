@@ -52,4 +52,5 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
     Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.destroy');
+    Route::get('users/get-permissions', [UserController::class, 'getPermissions']);
 });

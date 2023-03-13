@@ -2,8 +2,12 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -40,11 +44,23 @@ class Handler extends ExceptionHandler
 //        });
         $this->renderable(function (\Exception $e, $request){
             if ($request->is('api/*')){
-                $id = $request->id;
-
-                if ($e instanceof NotFoundHttpException) {
-                    return errorResponse("Bunday url maydoni mavjud emas", 'error', 404);
+//                if ($e instanceof NotFoundHttpException) {
+//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
+//                }elseif ($e instanceof AuthorizationException) {
+//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
+//                }elseif ($e instanceof ModelNotFoundException) {
+//                    return response()->json([
+//                        'error' => 'Entry for '.str_replace('App', '', $e->getModel()).' not found'], 404);
+//                }
+                $arr = [400, 401, 403, 404];
+                $messages = [
+                    404 => "Sahifa topilmadi",
+                    403 => "ruxsat yo'q",
+                ];
+                if (in_array($e->getStatusCode(), $arr)) {
+                    return errorResponse("", $messages[$e->getStatusCode()], $e->getStatusCode());
                 }
+//                return errorResponse("Bu amalni bajarish uchun ruxsat yo'q", 'error', $id);
             }
         });
     }

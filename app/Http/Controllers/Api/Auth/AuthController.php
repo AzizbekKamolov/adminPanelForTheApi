@@ -18,7 +18,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function login(){
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])){
+        if(Auth::attempt(['login' => request('login'), 'password' => request('password')])){
             $data['user'] = Auth::user();
             $data['token'] =  $data['user']->createToken('MyLaravelApp')-> accessToken;
             return successResponse($data);
@@ -36,21 +36,22 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|unique:users',
+            'first_name' => 'required',
+            'login' => 'required|unique:users',
             'password' => 'required',
             'confirmation_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
             return errorResponse($validator->errors());
         }
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+       $user = User::create([
+          'first_name' => $request->first_name,
+          'login' => $request->login,
+          'password' => Hash::make($request->password),
+       ]);
         $token =  $user->createToken('MyLaravelApp')->accessToken;
-        cookie('auth_token', $token);
+
+        \auth()->login($user);
         return response()->json([
             'user' => $user,
             'token' => $token,

@@ -2,28 +2,70 @@
 
 return [
     "permissions" => [
-        'permission.index',
-        'permission.show',
-        'permission.store',
-        'permission.edit',
-        'permission.update',
-        'permission.delete',
-        'user.index',
-        'user.show',
-        'user.store',
-        'user.edit',
-        'user.update',
-        'user.delete',
-        'role.index',
-        'role.show',
-        'role.store',
-        'role.edit',
-        'role.update',
-        'role.delete',
+        [
+            'name' => 'permission.index'
+        ],
+        [
+            'name' => 'permission.show'
+        ],
+        [
+            'name' => 'permission.store'
+        ],
+        [
+            'name' => 'permission.edit'
+        ],
+        [
+            'name' => 'permission.update'
+        ],
+        [
+            'name' => 'permission.delete'
+        ],
+        [
+            'name' => 'user.index'
+        ],
+        [
+            'name' => 'user.show'
+        ],
+        [
+            'name' => 'user.store'
+        ],
+        [
+            'name' => 'user.edit'
+        ],
+        [
+            'name' => 'user.update'
+        ],
+        [
+            'name' => 'user.delete'
+        ],
+        [
+            'name' => 'role.index'
+        ],
+        [
+            'name' => 'role.show'
+        ],
+        [
+            'name' => 'role.store'
+        ],
+        [
+            'name' => 'role.edit'
+        ],
+        [
+            'name' => 'role.update'
+        ],
+        [
+            'name' => 'role.delete'
+        ],
     ],
     'roles' => [
-        'superAdmin',
-        'admin',
-        'simpleUser'
+        [
+            'name' => 'superAdmin'
+        ],
+        [
+            'name' => 'admin'
+        ],
+        [
+            'name' => 'simpleUser'
+        ],
     ],
 ];
