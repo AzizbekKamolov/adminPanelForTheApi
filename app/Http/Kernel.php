@@ -42,6 +42,7 @@ class Kernel extends HttpKernel
         'api' => [
              \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
+            'SetLocale' => \App\Http\Middleware\SetLocale::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -55,6 +56,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'SetLocale' => \App\Http\Middleware\SetLocale::class,
         'authorizedUsers' => \App\Http\Middleware\AuthorizedUsers::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,

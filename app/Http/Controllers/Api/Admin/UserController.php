@@ -35,7 +35,8 @@ class UserController extends Controller
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            $a[$user] = 'Ma\'lumot topilmadi';
+            return errorResponse($a);
         }
         $data->password = decrypt($data->userPassword->content);
         return successResponse($data);
@@ -76,6 +77,10 @@ class UserController extends Controller
             return errorResponse($data->errors());
         }
         $user = User::find($user);
+        if (!$user){
+            $a[] ="Ma'lumot topilmadi";
+            return errorResponse($a);
+        }
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
@@ -102,7 +107,8 @@ class UserController extends Controller
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            $a[$user] = 'Ma\'lumot topilmadi';
+            return errorResponse($a);
         }
         $data->delete();
         return successResponse($data);

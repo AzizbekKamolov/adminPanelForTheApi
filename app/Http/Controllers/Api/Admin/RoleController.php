@@ -50,6 +50,9 @@ class RoleController extends Controller
             return errorResponse($data->errors());
         }
         $result = Role::where('id', $role)->first();
+        if (!$result){
+            return errorResponse("Ma'lumot topilmadi");
+        }
         $result->name = $request->name;
         $result->update();
         $result->syncPermissions($request->permissions);

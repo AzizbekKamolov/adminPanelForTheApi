@@ -10,9 +10,11 @@ if (!function_exists('successResponse')){
     }
 }
 if (!function_exists('errorResponse')){
-    function errorResponse($data, $message = 'error', $code = 400){
+    function errorResponse($data, $message = 'error', $code = 422){
         return response()->json([
-            'data' => $data,
+            'data' => [
+                'errors' =>$data
+            ],
             'message' => $message,
             'code' => $code
         ]);

@@ -17,41 +17,48 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('notAuthorized', function (){
-    return successResponse([], "Ro'yxatdan o'tmagansiz", 401);
-})->name('notAuthorized');
-
-
-Route::group(['middleware' => 'authorizedUsers'], function(){
-    Route::post('login', [AuthController::class, 'login']);
-    Route::post('register', [AuthController::class, 'register']);
+Route::get('/get-lang', function (){
+    return successResponse(session()->get('locale'));
 });
 
-Route::group(['middleware' => 'auth:api'], function(){
-    Route::get('logout', [AuthController::class, 'logout']);
-    Route::post('user-details', [AuthController::class, 'userDetails']);
+Route::prefix('{lang?}')->middleware('SetLocale')->group(function (){
+    Route::get('notAuthorized', function (){
+        return successResponse([], "Ro'yxatdan o'tmagansiz", 401);
+    })->name('notAuthorized');
 
-    //Permissions
-    Route::get('/permissions', [PermissionController::class, 'index'])->can('permission.index');
-    Route::post('/permissions', [PermissionController::class, 'store'])->can('permission.store');
-    Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit'])->can('permission.edit');
-    Route::put('/permissions/{permission}', [PermissionController::class, 'update'])->can('permission.update');
-    Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy'])->can('permission.destroy');
 
-    //Roles
-    Route::get('/roles', [RoleController::class, 'index'])->can('role.index');
-    Route::post('/roles', [RoleController::class, 'store'])->can('role.store');
-    Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->can('role.edit');
-    Route::put('/roles/{role}', [RoleController::class, 'update'])->can('role.update');
-    Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->can('role.destroy');
+    Route::group(['middleware' => 'authorizedUsers'], function(){
+        Route::post('login', [AuthController::class, 'login']);
+        Route::post('register', [AuthController::class, 'register']);
+    });
 
-    //Users
-    Route::get('/users', [UserController::class, 'index'])->can('user.index');
-    Route::post('/users', [UserController::class, 'store'])->can('user.store');
-    Route::get('/users/{user}/show', [UserController::class, 'show'])->can('user.show');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
-    Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.destroy');
-    Route::get('users/get-permissions', [UserController::class, 'getPermissions']);
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::get('logout', [AuthController::class, 'logout']);
+        Route::post('user-details', [AuthController::class, 'userDetails']);
+
+        //Permissions
+        Route::get('/permissions', [PermissionController::class, 'index'])->can('permission.index');
+        Route::post('/permissions', [PermissionController::class, 'store'])->can('permission.store');
+        Route::get('/permissions/{permission}/edit', [PermissionController::class, 'edit'])->can('permission.edit');
+        Route::put('/permissions/{permission}', [PermissionController::class, 'update'])->can('permission.update');
+        Route::delete('/permissions/{permission}', [PermissionController::class, 'destroy'])->can('permission.delete');
+
+        //Roles
+        Route::get('/roles', [RoleController::class, 'index'])->can('role.index');
+        Route::post('/roles', [RoleController::class, 'store'])->can('role.store');
+        Route::get('/roles/{role}/edit', [RoleController::class, 'edit'])->can('role.edit');
+        Route::put('/roles/{role}', [RoleController::class, 'update'])->can('role.update');
+        Route::delete('/roles/{role}', [RoleController::class, 'destroy'])->can('role.delete');
+
+        //Users
+        Route::get('/users', [UserController::class, 'index'])->can('user.index');
+        Route::post('/users', [UserController::class, 'store'])->can('user.store');
+        Route::get('/users/{user}/show', [UserController::class, 'show'])->can('user.show');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
+        Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.delete');
+        Route::get('users/get-permissions', [UserController::class, 'getPermissions']);
+
+    });
 
 });

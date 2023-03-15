@@ -49,26 +49,25 @@ class Handler extends ExceptionHandler
 //                }elseif ($e instanceof AuthorizationException) {
 //                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
 //                }elseif ($e instanceof ModelNotFoundException) {
-//                    return response()->json([
-//                        'error' => 'Entry for '.str_replace('App', '', $e->getModel()).' not found'], 404);
+//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
 //                }
-                if (auth()->check() && $this->isHttpException($e)){
-                    $langs = ['uz', 'ru', 'en'];
-                    if (in_array(app()->getLocale(), $langs)){
-                        $lang = app()->getLocale();
-                    }else{
-                        $lang = 'uz';
-                    }
-                    $arr = [400, 401, 403, 404, 405, 500];
-                        $code = $e->getStatusCode();
-                        dd($request->id);
-                        if (in_array($code, $arr)) {
-                            return response()->json([
-                                'message' => config('myVariables.messages')[$lang][$code],
-                                'code' => $code
-                            ]);
-                        }
-                }
+//                if (auth()->check() && $this->isHttpException($e)){
+//                    $langs = ['uz', 'ru', 'en'];
+//                    if (in_array(app()->getLocale(), $langs)){
+//                        $lang = app()->getLocale();
+//                    }else{
+//                        $lang = 'uz';
+//                    }
+//                    $arr = [400, 401, 403, 404, 405, 500];
+//                        $code = $e->getStatusCode();
+//                        dd($request->id);
+//                        if (in_array($code, $arr)) {
+//                            return response()->json([
+//                                'message' => config('myVariables.messages')[$lang][$code],
+//                                'code' => $code
+//                            ]);
+//                        }
+//                }
             }
         });
     }

@@ -39,12 +39,12 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
-            'login' => 'required|unique:users',
+            'login' => 'required|unique:users|min:10',
             'password' => 'required',
             'confirmation_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return errorResponse($validator->errors());
+            return errorResponse($validator->errors(), 'error', 422);
         }
        $user = User::create([
           'first_name' => $request->first_name,

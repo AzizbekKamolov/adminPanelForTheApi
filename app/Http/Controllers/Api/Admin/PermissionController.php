@@ -19,7 +19,8 @@ class PermissionController extends Controller
     public function edit($permission){
         $data = Permission::find($permission);
         if (!$data){
-           return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            $a[$permission] = 'Ma\'lumot topilmadi';
+            return errorResponse($a);
         }
         return successResponse($data);
     }
@@ -45,6 +46,10 @@ class PermissionController extends Controller
             return errorResponse($data->errors());
         }
         $result = Permission::select('id', 'name')->where('id', $permission)->first();
+        if (!$result){
+            $a[$permission] = 'Ma\'lumot topilmadi';
+            return errorResponse($a);
+        }
         $result->name = $request->name;
         $result->update();
         return successResponse($result);
@@ -55,7 +60,8 @@ class PermissionController extends Controller
     public function destroy($permission){
         $data = Permission::find($permission);
         if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            $a[$permission] = 'Ma\'lumot topilmadi';
+            return errorResponse($a);
         }
         $data->delete();
         return successResponse($data);
