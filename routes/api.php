@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('SetLocale')->group(function () {
     Route::get('notAuthorized', function () {
-        return successResponse(["message" => trans('defaultMessages.notAuthorized')], "error", 401);
+        return errorResponse(["message" => trans('defaultMessages.notAuthorized')], "error", 401);
     })->name('notAuthorized');
 
 
@@ -58,6 +58,7 @@ Route::middleware('SetLocale')->group(function () {
         Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.delete');
         Route::get('users/get-permissions', [UserController::class, 'getPermissions']);
+        Route::get('/get-password/{user?}', [UserController::class, 'getPassword'])->can('user.getPassword');
 
     });
 

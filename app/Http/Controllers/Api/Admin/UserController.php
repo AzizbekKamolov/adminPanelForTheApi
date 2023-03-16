@@ -104,10 +104,18 @@ class UserController extends Controller
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            $a[$user] = trans('defaultMessages.users.not_found');
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.users.not_found'));
         }
         $data->delete();
         return successResponse($data, trans('defaultMessages.users.success_delete'));
+    }
+    public function getPassword($user){
+        $data = User::with('userPassword')->find($user);
+        if (!$data->userPassword){
+            return errorResponse(trans('defaultMessages.users.not_found'));
+        }
+        $result['password'] = decrypt($data->userPassword->content);
+        return successResponse($result);
+
     }
 }

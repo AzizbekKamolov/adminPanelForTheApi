@@ -65,6 +65,9 @@ return [
             'name' => 'user.delete'
         ],
         [
+            'name' => 'user.getPassword'
+        ],
+        [
             'name' => 'role.index'
         ],
         [

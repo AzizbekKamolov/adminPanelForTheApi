@@ -29,7 +29,7 @@ class AuthController extends Controller
         }
         if(Auth::attempt(['login' => request('login'), 'password' => request('password')])){
             $result['user'] = Auth::user();
-            $result['token'] =  $data['user']->createToken('MyLaravelApp')->accessToken;
+            $result['token'] =  $result['user']->createToken('MyLaravelApp')->accessToken;
             return successResponse($result)->header('auth_token', $result['token']);
         }
         else{
@@ -83,8 +83,9 @@ class AuthController extends Controller
         return successResponse($user);
     }
     public function logout(){
-        $user = Auth::user()->token();
-        $user->revoke();
+        request()->user()->tokens->each(function ($token, $key) {
+            $token->delete();
+        });
         return successResponse([], "Muvaffaqiyatli tizimidan chiqdingiz");
     }
 }
