@@ -92,8 +92,8 @@ return [
     | the language folders that are provided through your application.
     |
     */
-
-    'fallback_locale' => 'en',
+    'locales' => ['uz', 'ru', 'en'],
+    'fallback_locale' => 'uz',
 
     /*
     |--------------------------------------------------------------------------

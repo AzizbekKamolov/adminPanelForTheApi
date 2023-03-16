@@ -19,14 +19,21 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login(){
+    public function login(Request $request){
+        $data = Validator::make($request->all(), [
+           'login' => 'required|exists:users,login',
+           'password' => 'required'
+        ]);
+        if ($data->fails()){
+            return errorResponse($data->errors());
+        }
         if(Auth::attempt(['login' => request('login'), 'password' => request('password')])){
-            $data['user'] = Auth::user();
-            $data['token'] =  $data['user']->createToken('MyLaravelApp')-> accessToken;
-            return successResponse($data);
+            $result['user'] = Auth::user();
+            $result['token'] =  $data['user']->createToken('MyLaravelApp')->accessToken;
+            return successResponse($result)->header('auth_token', $result['token']);
         }
         else{
-            return successResponse([], "Login yoki parol xato", 401);
+            return errorResponse([], trans('defaultMessages.auth.pass_error'), 401);
         }
     }
 
@@ -39,7 +46,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
-            'login' => 'required|unique:users|min:10',
+            'login' => 'required|unique:users',
             'password' => 'required',
             'confirmation_password' => 'required|same:password',
         ]);
@@ -58,13 +65,8 @@ class AuthController extends Controller
             'content' => encrypt($request->password)
         ]);
 
-        $token =  $user->createToken('MyLaravelApp')->accessToken;
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-            'code' => 200,
-            'message' => 'success'
-        ])->withCookie('auth_token');
+        $user['token'] =  $user->createToken('MyLaravelApp')->accessToken;
+        return successResponse($user)->header('auth_token', $user['token']);
 
     }
 

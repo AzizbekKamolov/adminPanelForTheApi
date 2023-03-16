@@ -19,8 +19,7 @@ class PermissionController extends Controller
     public function edit($permission){
         $data = Permission::find($permission);
         if (!$data){
-            $a[$permission] = 'Ma\'lumot topilmadi';
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
         }
         return successResponse($data);
     }
@@ -33,10 +32,10 @@ class PermissionController extends Controller
             return errorResponse($data->errors());
         }
         $permission = Permission::create([
-            'name' => $data->validate()['name'],
+            'name' => $request->name,
             'guard_name' => 'api'
         ]);
-        return successResponse($permission);
+        return successResponse($permission, trans('defaultMessages.permissions.create_success'));
     }
     public function update(Request $request, $permission){
         $data = Validator::make($request->all(), [
@@ -47,12 +46,11 @@ class PermissionController extends Controller
         }
         $result = Permission::select('id', 'name')->where('id', $permission)->first();
         if (!$result){
-            $a[$permission] = 'Ma\'lumot topilmadi';
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.permissions.not_found'));
         }
         $result->name = $request->name;
         $result->update();
-        return successResponse($result);
+        return successResponse($result, trans('defaultMessages.permissions.update_success'));
     }
     public function show($permission){
         //
@@ -60,10 +58,9 @@ class PermissionController extends Controller
     public function destroy($permission){
         $data = Permission::find($permission);
         if (!$data){
-            $a[$permission] = 'Ma\'lumot topilmadi';
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
         }
         $data->delete();
-        return successResponse($data);
+        return successResponse(trans('defaultMessages.permissions.success_delete'));
     }
 }

@@ -19,13 +19,10 @@ class SetLocale
     public function handle(Request $request, Closure $next)
     {
         $arr = ['uz', 'ru', 'en'];
-        $lang = $request->segment(2);
+        $lang = $request->header('Accept-Language');
         if (in_array($lang, $arr)){
-            if (!session()->get('locale') == $lang){
-                session()->put('locale', $lang);
-            }
+            app()->setLocale($lang);
         }
-        app()->setLocale(session()->get('locale'));
 
         return $next($request);
     }

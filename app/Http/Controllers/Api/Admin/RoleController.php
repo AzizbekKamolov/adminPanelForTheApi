@@ -19,7 +19,7 @@ class RoleController extends Controller
     public function edit($role){
         $data = Role::select('id', 'name')->where('id', $role)->with('permissions:id,name')->first();
         if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            return errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
         }
         return successResponse($data);
     }
@@ -30,6 +30,7 @@ class RoleController extends Controller
             'permissions' => 'required|array',
             'permissions.*' => 'exists:permissions,id',
         ]);
+
         if ($data->fails()){
             return errorResponse($data->errors());
         }
@@ -38,7 +39,7 @@ class RoleController extends Controller
             'guard_name' => 'api'
         ]);
         $role->syncPermissions($request->permissions);
-        return successResponse($role);
+        return successResponse($role, trans('defaultMessages.roles.create_success'));
     }
     public function update(Request $request, $role){
         $data = Validator::make($request->all(), [
@@ -51,12 +52,12 @@ class RoleController extends Controller
         }
         $result = Role::where('id', $role)->first();
         if (!$result){
-            return errorResponse("Ma'lumot topilmadi");
+            return errorResponse(trans('defaultMessages.roles.not_found'));
         }
         $result->name = $request->name;
         $result->update();
         $result->syncPermissions($request->permissions);
-        return successResponse($result);
+        return successResponse($result, trans('defaultMessages.roles.update_success'));
     }
     public function show($role){
         //
@@ -64,9 +65,9 @@ class RoleController extends Controller
     public function destroy($role){
         $data = Role::find($role);
         if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+            return errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
         }
         $data->delete();
-        return successResponse($data);
+        return successResponse($data, trans('defaultMessages.roles.success_delete'));
     }
 }

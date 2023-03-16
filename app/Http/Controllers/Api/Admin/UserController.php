@@ -22,8 +22,8 @@ class UserController extends Controller
         return successResponse($data);
     }
     public function index(){
-        $users = User::select('id', 'name', 'email')->orderBy('name', 'ASC')->with('roles', function ($query){
-            $query->select('id', 'name')->with('permissions:id,name');
+        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession')->with('roles', function ($query){
+            $query->with('permissions:id,name');
         })->get();
         return successResponse($users);
     }
@@ -31,21 +31,19 @@ class UserController extends Controller
         //
     }
     public function edit($user){
-        $data = User::select('id', 'name', 'email')->where('id', $user)->with('roles', function ($query){
+        $data = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession')->where('id', $user)->with('roles', function ($query){
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
-            $a[$user] = 'Ma\'lumot topilmadi';
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.users.not_found'));
         }
-        $data->password = decrypt($data->userPassword->content);
         return successResponse($data);
     }
 
     public function store(Request $request){
         $data = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
+            'first_name' => 'required',
+            'login' => 'required|unique:users',
             'password' => 'required',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
@@ -54,8 +52,8 @@ class UserController extends Controller
             return errorResponse($data->errors());
         }
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'first_name' => $request->first_name,
+            'login' => $request->login,
             'password' => Hash::make($request->password),
         ]);
         UserPassword::create([
@@ -63,12 +61,12 @@ class UserController extends Controller
             'content' => encrypt($request->password)
         ]);
         $user->syncRoles($request->roles);
-        return successResponse($user);
+        return successResponse($user, trans('defaultMessages.users.create_success'));
     }
     public function update(Request $request, $user){
         $data = Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => "required|unique:users,email,$user",
+            'first_name' => 'required',
+            'login' => "required|unique:users,login,$user",
             'password' => 'required',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
@@ -78,11 +76,10 @@ class UserController extends Controller
         }
         $user = User::find($user);
         if (!$user){
-            $a[] ="Ma'lumot topilmadi";
-            return errorResponse($a);
+            return errorResponse(trans('defaultMessages.users.not_found'));
         }
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user->first_name = $request->first_name;
+        $user->login = $request->login;
         $user->password = Hash::make($request->password);
         $user->update();
 
@@ -92,10 +89,10 @@ class UserController extends Controller
             'content' => encrypt($request->password)
         ]);
         $user->syncRoles($request->roles);
-        return successResponse($user);
+        return successResponse($user, trans('defaultMessages.users.update_success'));
     }
     public function show($user){
-        $data = User::select('id', 'name', 'email')->where('id', $user)->with('roles', function ($query){
+        $data = User::select('id', 'name', 'login')->where('id', $user)->with('roles', function ($query){
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
@@ -107,10 +104,10 @@ class UserController extends Controller
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            $a[$user] = 'Ma\'lumot topilmadi';
+            $a[$user] = trans('defaultMessages.users.not_found');
             return errorResponse($a);
         }
         $data->delete();
-        return successResponse($data);
+        return successResponse($data, trans('defaultMessages.users.success_delete'));
     }
 }

@@ -6,8 +6,10 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -42,32 +44,22 @@ class Handler extends ExceptionHandler
 //        $this->reportable(function (Throwable $e) {
 //            //
 //        });
-        $this->renderable(function (\Exception $e, $request){
-            if ($request->is('api/*')){
-//                if ($e instanceof NotFoundHttpException) {
-//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
-//                }elseif ($e instanceof AuthorizationException) {
-//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
-//                }elseif ($e instanceof ModelNotFoundException) {
-//                    return errorResponse("Bunday url maydoni mavjud emas", 'error', $request->id);
-//                }
-//                if (auth()->check() && $this->isHttpException($e)){
-//                    $langs = ['uz', 'ru', 'en'];
-//                    if (in_array(app()->getLocale(), $langs)){
-//                        $lang = app()->getLocale();
-//                    }else{
-//                        $lang = 'uz';
-//                    }
-//                    $arr = [400, 401, 403, 404, 405, 500];
-//                        $code = $e->getStatusCode();
-//                        dd($request->id);
-//                        if (in_array($code, $arr)) {
-//                            return response()->json([
-//                                'message' => config('myVariables.messages')[$lang][$code],
-//                                'code' => $code
-//                            ]);
-//                        }
-//                }
+        $this->renderable(function (\Exception $e, $request) {
+            if ($request->is('api/*')) {
+                if ($e instanceof AuthorizationException) {
+                    return errorResponse(trans('defaultMessages.auth.unauthorized'), 'error', 400);
+                } elseif ($e instanceof UnauthorizedHttpException) {
+                    return errorResponse(trans('defaultMessages.auth.unauthorized'), 'error', 401);
+                } elseif ($e instanceof NotFoundHttpException) {
+                    return errorResponse(trans('defaultMessages.auth.not_found_http_url'), 'error', 404);
+                } elseif ($e instanceof ModelNotFoundException) {
+                    return errorResponse(trans('defaultMessages.auth.model_not_found'), 'error', 404);
+                } elseif ($e instanceof AccessDeniedHttpException) {
+                    return errorResponse(trans('defaultMessages.auth.forbidden'), 'error', 403);
+                } elseif ($e instanceof MethodNotAllowedHttpException) {
+                    return errorResponse(trans('defaultMessages.auth.method_not_allowed'), 'error', 405);
+                }
+
             }
         });
     }

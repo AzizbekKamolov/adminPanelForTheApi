@@ -17,22 +17,22 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-Route::get('/get-lang', function (){
-    return successResponse(session()->get('locale'));
-});
 
-Route::prefix('{lang?}')->middleware('SetLocale')->group(function (){
-    Route::get('notAuthorized', function (){
-        return successResponse([], "Ro'yxatdan o'tmagansiz", 401);
+
+Route::middleware('SetLocale')->group(function () {
+    Route::get('notAuthorized', function () {
+        return successResponse(["message" => trans('defaultMessages.notAuthorized')], "error", 401);
     })->name('notAuthorized');
 
 
-    Route::group(['middleware' => 'authorizedUsers'], function(){
-        Route::post('login', [AuthController::class, 'login']);
-        Route::post('register', [AuthController::class, 'register']);
-    });
+    Route::post('login', [AuthController::class, 'login']);
+    Route::post('register', [AuthController::class, 'register']);
 
-    Route::group(['middleware' => 'auth:api'], function(){
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('/get-lang', function () {
+            dd(app()->getLocale());
+            return successResponse(app()->getLocale());
+        });
         Route::get('logout', [AuthController::class, 'logout']);
         Route::post('user-details', [AuthController::class, 'userDetails']);
 
