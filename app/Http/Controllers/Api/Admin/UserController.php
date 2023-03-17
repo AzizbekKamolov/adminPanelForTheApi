@@ -107,6 +107,7 @@ class UserController extends Controller
             return errorResponse(trans('defaultMessages.users.not_found'));
         }
         $data->delete();
+
         return successResponse($data, trans('defaultMessages.users.success_delete'));
     }
     public function getPassword($user){
