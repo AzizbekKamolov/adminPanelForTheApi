@@ -19,9 +19,12 @@ class CreateTermsTable extends Migration
             $table->string('name_uz');
             $table->string('name_ru')->nullable();
             $table->string('name_en')->nullable();
+            $table->string('information_uz');
+            $table->string('information_ru')->nullable();
+            $table->string('information_en')->nullable();
             $table->boolean('active_name_ru')->default(true);
             $table->boolean('active_name_en')->default(true);
-            $table->integer('creted_by')->nullable();
+            $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
