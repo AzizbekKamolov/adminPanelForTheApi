@@ -24,8 +24,8 @@ return [
         'login_error' => 'Ошибка входа',
         'forbidden' => "Нет разрешения",
         'model_not_found' => "Информация не найдена",
-        'not_found_http_url' => "",
-        'unauthorized' => "Siz tizimga kirmagansiz ro'yxatdan o'ting",
-        'method_not_allowed' => "Method xato",
+        'not_found_http_url' => "Это поле URL не существует",
+        'unauthorized' => "Вы не вошли в систему. Зарегистрируйтесь",
+        'method_not_allowed' => "Ошибка метода",
     ],
 ];
