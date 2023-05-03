@@ -29,12 +29,8 @@ Route::middleware('SetLocale')->group(function () {
     Route::post('register', [AuthController::class, 'register']);
 
     Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('/get-lang', function () {
-            dd(app()->getLocale());
-            return successResponse(app()->getLocale());
-        });
         Route::get('logout', [AuthController::class, 'logout']);
-        Route::post('user-details', [AuthController::class, 'userDetails']);
+        Route::get('user-details', [AuthController::class, 'userDetails']);
 
         //Permissions
         Route::get('/permissions', [PermissionController::class, 'index'])->can('permission.index');
