@@ -29,61 +29,70 @@ return [
     ],
     "permissions" => [
         [
-            'name' => 'permission.index'
+            'name' => 'permission.index',
+            'description' => "Barcha ruxsatlarni ko'rish"
         ],
         [
-            'name' => 'permission.show'
+            'name' => 'permission.store',
+            'description' => "Ruxsatni Yaratish"
         ],
         [
-            'name' => 'permission.store'
+            'name' => 'permission.edit',
+            'description' => "Ruxsatlarni tahrirlash"
         ],
         [
-            'name' => 'permission.edit'
+            'name' => 'permission.update',
+            'description' => "Ruxsatlarni yangilash"
         ],
         [
-            'name' => 'permission.update'
+            'name' => 'permission.delete',
+            'description' => "Ruxsatlarni o'chirish"
+        ],
+        //////////////////////////////////////
+        [
+            'name' => 'user.index',
+            'description' => "Foydalanuvchilarni ko'rish"
         ],
         [
-            'name' => 'permission.delete'
+            'name' => 'user.store',
+            'description' => "Foydalanuvchini saqlash"
         ],
         [
-            'name' => 'user.index'
+            'name' => 'user.edit',
+            'description' => "Foydalanuvchini tahrirlash"
         ],
         [
-            'name' => 'user.show'
+            'name' => 'user.update',
+            'description' => "Foydalanuvchini yangilash"
         ],
         [
-            'name' => 'user.store'
+            'name' => 'user.delete',
+            'description' => "Foydalanuvchini o'chirish"
         ],
         [
-            'name' => 'user.edit'
+            'name' => 'user.getPassword',
+            'description' => "Foydalanuvchi parolini ko'rish"
+        ],
+        ///////////////////////////////
+        [
+            'name' => 'role.index',
+            'description' => "rollarni ko'rish"
         ],
         [
-            'name' => 'user.update'
+            'name' => 'role.store',
+            'description' => "Rolni yaratish"
         ],
         [
-            'name' => 'user.delete'
+            'name' => 'role.edit',
+            'description' => "Rolni tahrirlash"
         ],
         [
-            'name' => 'user.getPassword'
+            'name' => 'role.update',
+            'description' => "Rolni yangilash"
         ],
         [
-            'name' => 'role.index'
-        ],
-        [
-            'name' => 'role.show'
-        ],
-        [
-            'name' => 'role.store'
-        ],
-        [
-            'name' => 'role.edit'
-        ],
-        [
-            'name' => 'role.update'
-        ],
-        [
-            'name' => 'role.delete'
+            'name' => 'role.delete',
+            'description' => "Rolni o'chirish"
         ],
     ],
     'roles' => [
