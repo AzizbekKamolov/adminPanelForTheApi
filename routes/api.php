@@ -50,6 +50,7 @@ Route::middleware('SetLocale')->group(function () {
         Route::get('/users', [UserController::class, 'index'])->can('user.index');
         Route::post('/users', [UserController::class, 'store'])->can('user.store');
         Route::get('/users/{user}/show', [UserController::class, 'show'])->can('user.show');
+        Route::put('/user-active/{id}', [UserController::class, 'userActive'])->can('user.update');
         Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
         Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.delete');

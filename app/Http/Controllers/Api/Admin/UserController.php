@@ -22,16 +22,21 @@ class UserController extends Controller
         return successResponse($data);
     }
     public function index(){
-        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession')->with('roles', function ($query){
-            $query->with('permissions:id,name');
-        })->get();
+        $perPage = 10;
+        if (\request()->has('per_page')) {
+            $perPage = \request()->get('per_page');
+            if (!is_numeric($perPage)) {
+                $perPage = 10;
+            }
+        }
+        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession', 'active')->with('roles:id,name')->paginate($perPage);
         return successResponse($users);
     }
     public function create(){
         //
     }
     public function edit($user){
-        $data = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession')->where('id', $user)->with('roles', function ($query){
+        $data = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession', 'login')->where('id', $user)->with('roles', function ($query){
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
@@ -51,11 +56,19 @@ class UserController extends Controller
         if ($data->fails()){
             return errorResponse($data->errors());
         }
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'login' => $request->login,
-            'password' => Hash::make($request->password),
-        ]);
+        $result['login'] = $request->login;
+        $result['first_name'] = $request->first_name;
+        $result['password'] = Hash::make($request->password);
+        if (!empty($request->last_name)){
+            $result['last_name'] = $request->last_name;
+        }
+        if (!empty($request->profession)){
+            $result['profession'] = $request->profession;
+        }
+        if (!empty($request->middle_name)){
+            $result['middle_name'] = $request->middle_name;
+        }
+        $user = User::create($result);
         UserPassword::create([
             'user_id' => $user->id,
             'content' => encrypt($request->password)
@@ -67,7 +80,7 @@ class UserController extends Controller
         $data = Validator::make($request->all(), [
             'first_name' => 'required',
             'login' => "required|unique:users,login,$user",
-            'password' => 'required',
+//            'password' => 'required',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
         ]);
@@ -76,46 +89,54 @@ class UserController extends Controller
         }
         $user = User::find($user);
         if (!$user){
-            return errorResponse(trans('defaultMessages.users.not_found'));
+            return errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->middle_name = $request->middle_name;
+        $user->profession = $request->profession;
         $user->login = $request->login;
-        $user->password = Hash::make($request->password);
+        if ($request->has('password')){
+            $user->password = Hash::make($request->password);
+            UserPassword::where('user_id', $user->id)->update([
+                'user_id' => $user->id,
+                'content' => encrypt($request->password)
+            ]);
+        }
         $user->update();
-
-
-        UserPassword::where('user_id', $user->id)->update([
-            'user_id' => $user->id,
-            'content' => encrypt($request->password)
-        ]);
         $user->syncRoles($request->roles);
         return successResponse($user, trans('defaultMessages.users.update_success'));
     }
-    public function show($user){
-        $data = User::select('id', 'name', 'login')->where('id', $user)->with('roles', function ($query){
-            $query->select('id', 'name')->with('permissions:id,name');
-        })->first();
-        if (!$data){
-            return errorResponse("Ma'lumot topilmadi", 'error', 404);
+    public function userActive(Request $request, $id){
+        $user = User::find($id);
+        if (!$user){
+            return errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
-        $data->password = decrypt($data->userPassword->content);
-        return successResponse($data);
+        $data = Validator::make($request->all(), [
+            'active' => 'required|boolean',
+        ]);
+        if ($data->fails()){
+            return errorResponse($data->errors());
+        }
+        $user->active = $request->active;
+        $user->update();
+        return successResponse($user, trans('defaultMessages.users.update_success'));
     }
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            return errorResponse(trans('defaultMessages.users.not_found'));
+            return errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $data->delete();
 
         return successResponse($data, trans('defaultMessages.users.success_delete'));
     }
     public function getPassword($user){
-        $data = User::with('userPassword')->find($user);
-        if (!$data->userPassword){
-            return errorResponse(trans('defaultMessages.users.not_found'));
+        $data = UserPassword::where('user_id', $user)->first();
+        if (!$data){
+            return errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
-        $result['password'] = decrypt($data->userPassword->content);
+        $result['password'] = decrypt($data->content);
         return successResponse($result);
 
     }

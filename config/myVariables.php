@@ -103,6 +103,9 @@ return [
             'name' => 'admin'
         ],
         [
+            'name' => 'student'
+        ],
+        [
             'name' => 'simpleUser'
         ],
     ],
