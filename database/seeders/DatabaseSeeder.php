@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('permissions')->insert(config('myVariables.permissions'));
         DB::table('roles')->insert(config('myVariables.roles'));
         $role = Role::where('name', 'superAdmin')->first();
