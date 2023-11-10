@@ -23,13 +23,13 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $data = Validator::make($request->all(), [
-            'login' => 'required|exists:users,login',
+            'phone_number' => 'required|exists:users,phone_number',
             'password' => 'required'
         ]);
         if ($data->fails()) {
             return errorResponse($data->errors());
         }
-        $user = User::where('login', $request->get('login'))->active()->with('roles', function ($query) {
+        $user = User::where('phone_number', str_replace('+', '', $request->get('phone_number')))->active()->with('roles', function ($query) {
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$user) {
@@ -40,7 +40,7 @@ class AuthController extends Controller
         }
         $user['token'] = $user->createToken('MyLaravelApp')->plainTextToken;
 
-        return successResponse($user)->header('auth_token', $user['token']);
+        return $this->successResponse($user)->header('auth_token', $user['token']);
 
     }
 
@@ -53,20 +53,17 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
-            'login' => 'required|unique:users,login',
+            'phone_number' => 'required|unique:users,phone_number',
             'password' => 'required',
             'confirmation_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
             return errorResponse($validator->errors(), 'error', 422);
         }
-        $data['login'] = $request->login;
+        $data['phone_number'] = str_replace('+', '', $request->get('phone_number'));
         $data['first_name'] = $request->first_name;
         if (!empty($request->last_name)){
             $data['last_name'] = $request->last_name;
-        }
-        if (!empty($request->profession)){
-            $data['profession'] = $request->profession;
         }
         if (!empty($request->middle_name)){
             $data['middle_name'] = $request->middle_name;
@@ -82,7 +79,7 @@ class AuthController extends Controller
 
         $user['token'] = $user->createToken('MyLaravelApp')->plainTextToken;
 
-        return successResponse($user)->header('auth_token', $user['token']);
+        return $this->successResponse($user)->header('auth_token', $user['token']);
     }
 
     /**
@@ -96,19 +93,19 @@ class AuthController extends Controller
             $query->select('id', 'name')->with('permissions:id,name,description');
         })->first();
         $user['permissions'] =  auth()->user()->getAllPermissions()->pluck('name');
-        return successResponse($user);
+        return $this->successResponse($user);
     }
 
     public function logout()
     {
         \auth()->user()->tokens()->delete();
-        return successResponse("Muvaffaqiyatli tizimidan chiqdingiz");
+        return $this->successResponse("Muvaffaqiyatli tizimidan chiqdingiz");
     }
     public function refreshToken(Request $request)
     {
         $request->user()->tokens()->delete();
 
         $token['token'] = $request->user()->createToken('api')->plainTextToken;
-        return successResponse($token);
+        return $this->successResponse($token);
     }
 }

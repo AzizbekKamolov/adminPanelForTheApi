@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
         $role = Role::where('name', 'superAdmin')->first();
         $permission = \App\Models\Admin\Permission::select('id')->get()->toArray();
         $role->syncPermissions($permission);
+        User::query()->create([
+           "first_name" => "Admin",
+           "last_name" => "Admin",
+           "phone_number" => "998901111111",
+           "password" => bcrypt("admin"),
+        ]);
         $user = User::where('id', 1)->first();
         $user->assignRole($role);
     }
