@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Variables\AllResponse;
+use App\Traits\AllResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;

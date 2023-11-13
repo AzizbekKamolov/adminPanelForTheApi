@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public $successStatus = 200;
 
     /**
      * login api
@@ -27,7 +26,7 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if ($data->fails()) {
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $user = User::where('phone_number', str_replace('+', '', $request->get('phone_number')))->active()->with('roles', function ($query) {
             $query->select('id', 'name')->with('permissions:id,name');
@@ -69,17 +68,17 @@ class AuthController extends Controller
             $data['middle_name'] = $request->middle_name;
         }
         $data['password'] = Hash::make($request->password);
-        $user = User::create($data);
+        $user = User::query()->create($data);
 //        $role = Role::where('name', 'simpleUser')->first();
 //        $user->assignRole($role);
-        UserPassword::create([
+        UserPassword::query()->create([
             'user_id' => $user->id,
             'content' => encrypt($request->password)
         ]);
 
         $user['token'] = $user->createToken('MyLaravelApp')->plainTextToken;
 
-        return $this->successResponse($user)->header('auth_token', $user['token']);
+        return $this->successResponse($user);
     }
 
     /**

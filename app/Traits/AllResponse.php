@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Variables;
+namespace App\Traits;
 
 
 trait AllResponse
