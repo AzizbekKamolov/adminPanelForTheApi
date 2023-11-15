@@ -48,10 +48,9 @@ Route::middleware('SetLocale')->group(function () {
 
         //Users
         Route::get('/users', [UserController::class, 'index'])->can('user.index');
-        Route::post('/users', [UserController::class, 'store'])->can('user.store');
-        Route::get('/users/{user}/show', [UserController::class, 'show'])->can('user.show');
+        Route::post('/user', [UserController::class, 'store'])->can('user.store');
         Route::put('/user-active/{id}', [UserController::class, 'userActive'])->can('user.update');
-        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->can('user.edit');
+        Route::get('/user/{user}', [UserController::class, 'edit'])->can('user.edit');
         Route::put('/users/{user}', [UserController::class, 'update'])->can('user.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->can('user.delete');
         Route::get('users/get-permissions', [UserController::class, 'getPermissions']);

@@ -22,21 +22,14 @@ class UserController extends Controller
         return $this->successResponse($data);
     }
     public function index(){
-        $perPage = 10;
-        if (\request()->has('per_page')) {
-            $perPage = \request()->get('per_page');
-            if (!is_numeric($perPage)) {
-                $perPage = 10;
-            }
-        }
-        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession', 'active')->with('roles:id,name')->paginate($perPage);
-        return $this->successResponse($users);
+        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'active')->with('roles:id,name');
+        return $this->successResponse($this->getDataWithPaginate($users));
     }
     public function create(){
         //
     }
     public function edit($user){
-        $data = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession', 'login')->where('id', $user)->with('roles', function ($query){
+        $data = User::query()->where('id', $user)->with('roles', function ($query){
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
@@ -48,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request){
         $data = Validator::make($request->all(), [
             'first_name' => 'required',
-            'login' => 'required|unique:users',
+            'phone_number' => 'required|unique:users',
             'password' => 'required',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
@@ -56,30 +49,27 @@ class UserController extends Controller
         if ($data->fails()){
             return $this->errorResponse($data->errors());
         }
-        $result['login'] = $request->login;
+        $result['phone_number'] = $request->phone_number;
         $result['first_name'] = $request->first_name;
         $result['password'] = Hash::make($request->password);
-        if (!empty($request->last_name)){
+        if ($request->last_name){
             $result['last_name'] = $request->last_name;
         }
-        if (!empty($request->profession)){
-            $result['profession'] = $request->profession;
-        }
-        if (!empty($request->middle_name)){
+        if ($request->middle_name){
             $result['middle_name'] = $request->middle_name;
         }
-        $user = User::create($result);
-        UserPassword::create([
+        $user = User::query()->create($result);
+        UserPassword::query()->create([
             'user_id' => $user->id,
             'content' => encrypt($request->password)
         ]);
         $user->syncRoles($request->roles);
         return $this->successResponse($user, trans('defaultMessages.users.create_success'));
     }
-    public function update(Request $request, $user){
+    public function update(Request $request, $id){
         $data = Validator::make($request->all(), [
             'first_name' => 'required',
-            'login' => "required|unique:users,login,$user",
+            'phone_number' => "required|unique:users,phone_number,$id",
 //            'password' => 'required',
             'roles' => 'required|array',
             'roles.*' => 'exists:roles,id',
@@ -87,15 +77,14 @@ class UserController extends Controller
         if ($data->fails()){
             return $this->errorResponse($data->errors());
         }
-        $user = User::find($user);
+        $user = User::query()->find($id);
         if (!$user){
             return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->middle_name = $request->middle_name;
-        $user->profession = $request->profession;
-        $user->login = $request->login;
+        $user->phone_number = $request->phone_number;
         if ($request->has('password')){
             $user->password = Hash::make($request->password);
             UserPassword::where('user_id', $user->id)->update([
@@ -130,6 +119,11 @@ class UserController extends Controller
         $data->delete();
 
         return $this->successResponse($data, trans('defaultMessages.users.success_delete'));
+    }
+
+    public function show($id)
+    {
+        //
     }
     public function getPassword($user){
         $data = UserPassword::where('user_id', $user)->first();

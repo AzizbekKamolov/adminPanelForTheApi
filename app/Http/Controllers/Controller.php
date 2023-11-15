@@ -14,6 +14,11 @@ class Controller extends BaseController
 
     public function getDataWithPaginate($data)
     {
-        return request()->per_page == 'all' ? $data->get() : (is_int(request()->per_page)) ? $data->paginate(request()->per_page) : $data->paginate();
+        if (request()->per_page == 'all'){
+            return ['data' => $data->get()];
+        }elseif (is_numeric(request()->per_page)){
+            return $data->paginate(request()->per_page);
+        }
+        return $data->paginate();
     }
 }
