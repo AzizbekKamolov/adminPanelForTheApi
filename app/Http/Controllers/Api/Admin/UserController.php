@@ -19,7 +19,7 @@ class UserController extends Controller
             $a = explode('.',$user['name']);
             $data[$a[0].'s'][] = $user['name'];
         }
-        return successResponse($data);
+        return $this->successResponse($data);
     }
     public function index(){
         $perPage = 10;
@@ -30,7 +30,7 @@ class UserController extends Controller
             }
         }
         $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'profession', 'active')->with('roles:id,name')->paginate($perPage);
-        return successResponse($users);
+        return $this->successResponse($users);
     }
     public function create(){
         //
@@ -40,9 +40,9 @@ class UserController extends Controller
             $query->select('id', 'name')->with('permissions:id,name');
         })->first();
         if (!$data){
-            return errorResponse(trans('defaultMessages.users.not_found'));
+            return $this->errorResponse(trans('defaultMessages.users.not_found'));
         }
-        return successResponse($data);
+        return $this->successResponse($data);
     }
 
     public function store(Request $request){
@@ -54,7 +54,7 @@ class UserController extends Controller
             'roles.*' => 'exists:roles,id',
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $result['login'] = $request->login;
         $result['first_name'] = $request->first_name;
@@ -74,7 +74,7 @@ class UserController extends Controller
             'content' => encrypt($request->password)
         ]);
         $user->syncRoles($request->roles);
-        return successResponse($user, trans('defaultMessages.users.create_success'));
+        return $this->successResponse($user, trans('defaultMessages.users.create_success'));
     }
     public function update(Request $request, $user){
         $data = Validator::make($request->all(), [
@@ -85,11 +85,11 @@ class UserController extends Controller
             'roles.*' => 'exists:roles,id',
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $user = User::find($user);
         if (!$user){
-            return errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -105,39 +105,39 @@ class UserController extends Controller
         }
         $user->update();
         $user->syncRoles($request->roles);
-        return successResponse($user, trans('defaultMessages.users.update_success'));
+        return $this->successResponse($user, trans('defaultMessages.users.update_success'));
     }
     public function userActive(Request $request, $id){
         $user = User::find($id);
         if (!$user){
-            return errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $data = Validator::make($request->all(), [
             'active' => 'required|boolean',
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $user->active = $request->active;
         $user->update();
-        return successResponse($user, trans('defaultMessages.users.update_success'));
+        return $this->successResponse($user, trans('defaultMessages.users.update_success'));
     }
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            return errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $data->delete();
 
-        return successResponse($data, trans('defaultMessages.users.success_delete'));
+        return $this->successResponse($data, trans('defaultMessages.users.success_delete'));
     }
     public function getPassword($user){
         $data = UserPassword::where('user_id', $user)->first();
         if (!$data){
-            return errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
         }
         $result['password'] = decrypt($data->content);
-        return successResponse($result);
+        return $this->successResponse($result);
 
     }
 }

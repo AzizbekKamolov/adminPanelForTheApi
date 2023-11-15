@@ -11,7 +11,7 @@ class RoleController extends Controller
 {
     public function index(){
         $roles = Role::select('id', 'name')->orderBy('name', 'ASC')->with('permissions:id,name')->get();
-        return successResponse($roles);
+        return $this->successResponse($roles);
     }
     public function create(){
         //
@@ -19,9 +19,9 @@ class RoleController extends Controller
     public function edit($role){
         $data = Role::select('id', 'name')->where('id', $role)->with('permissions:id,name')->first();
         if (!$data){
-            return errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
+            return $this->errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
         }
-        return successResponse($data);
+        return $this->successResponse($data);
     }
 
     public function store(Request $request){
@@ -32,14 +32,14 @@ class RoleController extends Controller
         ]);
 
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $role = Role::create([
             'name' => $request->name,
             'guard_name' => 'api'
         ]);
         $role->syncPermissions($request->permissions);
-        return successResponse($role, trans('defaultMessages.roles.create_success'));
+        return $this->successResponse($role, trans('defaultMessages.roles.create_success'));
     }
     public function update(Request $request, $role){
         $data = Validator::make($request->all(), [
@@ -48,16 +48,16 @@ class RoleController extends Controller
             'permissions.*' => 'exists:permissions,id',
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $result = Role::where('id', $role)->first();
         if (!$result){
-            return errorResponse(trans('defaultMessages.roles.not_found'));
+            return $this->errorResponse(trans('defaultMessages.roles.not_found'));
         }
         $result->name = $request->name;
         $result->update();
         $result->syncPermissions($request->permissions);
-        return successResponse($result, trans('defaultMessages.roles.update_success'));
+        return $this->successResponse($result, trans('defaultMessages.roles.update_success'));
     }
     public function show($role){
         //
@@ -65,9 +65,9 @@ class RoleController extends Controller
     public function destroy($role){
         $data = Role::find($role);
         if (!$data){
-            return errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
+            return $this->errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
         }
         $data->delete();
-        return successResponse($data, trans('defaultMessages.roles.success_delete'));
+        return $this->successResponse($data, trans('defaultMessages.roles.success_delete'));
     }
 }

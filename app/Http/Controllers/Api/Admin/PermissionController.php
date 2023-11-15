@@ -11,7 +11,7 @@ class PermissionController extends Controller
 {
     public function index(){
         $permissions = Permission::select('id', 'name')->orderBy('name', 'ASC')->get();
-        return successResponse($permissions);
+        return $this->successResponse($permissions);
     }
     public function create(){
     //
@@ -19,9 +19,9 @@ class PermissionController extends Controller
     public function edit($permission){
         $data = Permission::find($permission);
         if (!$data){
-            return errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
+            return $this->errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
         }
-        return successResponse($data);
+        return $this->successResponse($data);
     }
 
     public function store(Request $request){
@@ -29,28 +29,28 @@ class PermissionController extends Controller
             'name' => 'required|unique:permissions'
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $permission = Permission::create([
             'name' => $request->name,
             'guard_name' => 'api'
         ]);
-        return successResponse($permission, trans('defaultMessages.permissions.create_success'));
+        return $this->successResponse($permission, trans('defaultMessages.permissions.create_success'));
     }
     public function update(Request $request, $permission){
         $data = Validator::make($request->all(), [
             'name' => "required|unique:permissions,name,$permission"
         ]);
         if ($data->fails()){
-            return errorResponse($data->errors());
+            return $this->errorResponse($data->errors());
         }
         $result = Permission::select('id', 'name')->where('id', $permission)->first();
         if (!$result){
-            return errorResponse(trans('defaultMessages.permissions.not_found'));
+            return $this->errorResponse(trans('defaultMessages.permissions.not_found'));
         }
         $result->name = $request->name;
         $result->update();
-        return successResponse($result, trans('defaultMessages.permissions.update_success'));
+        return $this->successResponse($result, trans('defaultMessages.permissions.update_success'));
     }
     public function show($permission){
         //
@@ -58,9 +58,9 @@ class PermissionController extends Controller
     public function destroy($permission){
         $data = Permission::find($permission);
         if (!$data){
-            return errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
+            return $this->errorResponse(trans('defaultMessages.permissions.not_found'), 'error', 404);
         }
         $data->delete();
-        return successResponse(trans('defaultMessages.permissions.success_delete'));
+        return $this->successResponse(trans('defaultMessages.permissions.success_delete'));
     }
 }
