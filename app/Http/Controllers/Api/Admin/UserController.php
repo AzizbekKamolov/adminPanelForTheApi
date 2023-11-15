@@ -22,18 +22,16 @@ class UserController extends Controller
         return $this->successResponse($data);
     }
     public function index(){
-        $users = User::select('id', 'first_name', 'last_name', 'middle_name', 'active')->with('roles:id,name');
+        $users = User::query()->select('id', 'first_name', 'last_name', 'middle_name', 'active')->with('roles:id,name');
         return $this->successResponse($this->getDataWithPaginate($users));
     }
     public function create(){
         //
     }
     public function edit($user){
-        $data = User::query()->where('id', $user)->with('roles', function ($query){
-            $query->select('id', 'name')->with('permissions:id,name');
-        })->first();
+        $data = User::query()->where('id', $user)->with('roles')->first();
         if (!$data){
-            return $this->errorResponse(trans('defaultMessages.users.not_found'));
+            return $this->error(trans('defaultMessages.users.not_found'), 404);
         }
         return $this->successResponse($data);
     }
@@ -99,7 +97,7 @@ class UserController extends Controller
     public function userActive(Request $request, $id){
         $user = User::find($id);
         if (!$user){
-            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->error(trans('defaultMessages.users.not_found'),404);
         }
         $data = Validator::make($request->all(), [
             'active' => 'required|boolean',
@@ -114,11 +112,11 @@ class UserController extends Controller
     public function destroy($user){
         $data = User::find($user);
         if (!$data){
-            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->error(trans('defaultMessages.users.not_found'),404);
         }
         $data->delete();
 
-        return $this->successResponse($data, trans('defaultMessages.users.success_delete'));
+        return $this->success(trans('defaultMessages.users.success_delete'));
     }
 
     public function show($id)
@@ -126,9 +124,9 @@ class UserController extends Controller
         //
     }
     public function getPassword($user){
-        $data = UserPassword::where('user_id', $user)->first();
+        $data = UserPassword::query()->where('user_id', $user)->first();
         if (!$data){
-            return $this->errorResponse(trans('defaultMessages.users.not_found'), 404);
+            return $this->error(trans('defaultMessages.users.not_found'), 404);
         }
         $result['password'] = decrypt($data->content);
         return $this->successResponse($result);

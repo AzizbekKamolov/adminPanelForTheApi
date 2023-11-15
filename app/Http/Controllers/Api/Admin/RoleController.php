@@ -19,7 +19,7 @@ class RoleController extends Controller
     public function edit($role){
         $data = Role::select('id', 'name')->where('id', $role)->with('permissions:id,name')->first();
         if (!$data){
-            return $this->errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
+            return $this->error(trans('defaultMessages.roles.not_found'), 404);
         }
         return $this->successResponse($data);
     }
@@ -52,7 +52,7 @@ class RoleController extends Controller
         }
         $result = Role::where('id', $role)->first();
         if (!$result){
-            return $this->errorResponse(trans('defaultMessages.roles.not_found'));
+            return $this->error(trans('defaultMessages.roles.not_found'), 404);
         }
         $result->name = $request->name;
         $result->update();
@@ -65,7 +65,7 @@ class RoleController extends Controller
     public function destroy($role){
         $data = Role::find($role);
         if (!$data){
-            return $this->errorResponse(trans('defaultMessages.roles.not_found'), 'error', 404);
+            return $this->error(trans('defaultMessages.roles.not_found'), 404);
         }
         $data->delete();
         return $this->successResponse($data, trans('defaultMessages.roles.success_delete'));

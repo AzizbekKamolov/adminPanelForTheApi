@@ -11,7 +11,7 @@ trait AllResponse
         return response()->json([
             "status" => 1,
             "message" => $message,
-        ])->withHeaders(['code' => $code]);
+        ], $code);
     }
 
     public function successResponse($data = [], $message = 'success', $code = 200)
@@ -20,7 +20,7 @@ trait AllResponse
             "data" => $data,
             "status" => 1,
             "message" => $message,
-        ])->withHeaders(['code' => $code]);
+        ], $code);
     }
 
     public function error($message = 'error', $code = 422)
@@ -28,7 +28,7 @@ trait AllResponse
         return response()->json([
             "status" => 0,
             "message" => $message,
-        ])->withHeaders(['code' => $code]);
+        ], $code);
     }
 
     public function errorResponse($data = [], $message = 'error', $code = 422)
@@ -37,6 +37,6 @@ trait AllResponse
             "errors" => $data,
             "status" => 0,
             "message" => $message,
-        ])->withHeaders(['code' => $code]);
+        ], $code);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -46,18 +47,19 @@ class Handler extends ExceptionHandler
 //        });
         $this->renderable(function (\Exception $e, $request) {
             if ($request->is('api/*')) {
+                $res = new Controller();
                 if ($e instanceof AuthorizationException) {
-                    return errorResponse(trans('defaultMessages.auth.unauthorized'), 'error', 400);
+                    return $res->error(trans('defaultMessages.auth.unauthorized'), 400);
                 } elseif ($e instanceof UnauthorizedHttpException) {
-                    return errorResponse(trans('defaultMessages.auth.unauthorized'), 'error', 401);
+                    return $res->error(trans('defaultMessages.auth.unauthorized'), 401);
                 } elseif ($e instanceof NotFoundHttpException) {
-                    return errorResponse(trans('defaultMessages.auth.not_found_http_url'), 'error', 404);
+                    return $res->error(trans('defaultMessages.auth.not_found_http_url'), 404);
                 } elseif ($e instanceof ModelNotFoundException) {
-                    return errorResponse(trans('defaultMessages.auth.model_not_found'), 'error', 404);
+                    return $res->error(trans('defaultMessages.auth.model_not_found'), 404);
                 } elseif ($e instanceof AccessDeniedHttpException) {
-                    return errorResponse(trans('defaultMessages.auth.forbidden'), 'error', 403);
+                    return $res->error(trans('defaultMessages.auth.forbidden'), 403);
                 } elseif ($e instanceof MethodNotAllowedHttpException) {
-                    return errorResponse(trans('defaultMessages.auth.method_not_allowed'), 'error', 405);
+                    return $res->error(trans('defaultMessages.auth.method_not_allowed'), 405);
                 }
 
             }
