@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
     {
         DB::table('permissions')->insert(config('myVariables.permissions'));
         DB::table('roles')->insert(config('myVariables.roles'));
-        $role = Role::where('name', 'superAdmin')->first();
-        $permission = \App\Models\Admin\Permission::select('id')->get()->toArray();
+        $role = Role::query()->where('name', 'superAdmin')->first();
+        $permission = \App\Models\Admin\Permission::query()->select('id')->get()->toArray();
         $role->syncPermissions($permission);
         User::query()->create([
            "first_name" => "Admin",
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
            "phone_number" => "998901111111",
            "password" => bcrypt("admin"),
         ]);
-        $user = User::where('id', 1)->first();
+        $user = User::query()->where('id', 1)->first();
         $user->assignRole($role);
     }
 }
