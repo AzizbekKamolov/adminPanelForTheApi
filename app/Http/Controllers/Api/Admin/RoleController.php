@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Validator;
 class RoleController extends Controller
 {
     public function index(){
-        $roles = Role::select('id', 'name')->orderBy('name', 'ASC')->with('permissions:id,name')->get();
+        $roles = Role::select('id', 'name')->orderBy('name', 'ASC')
+//            ->with('permissions:id,name')
+            ->get();
         return $this->successResponse($roles);
     }
     public function create(){

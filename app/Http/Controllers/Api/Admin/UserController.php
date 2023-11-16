@@ -62,7 +62,7 @@ class UserController extends Controller
             'content' => encrypt($request->password)
         ]);
         $user->syncRoles($request->roles);
-        return $this->successResponse($user, trans('defaultMessages.users.create_success'));
+        return $this->success(trans('defaultMessages.users.create_success'));
     }
     public function update(Request $request, $id){
         $data = Validator::make($request->all(), [
@@ -92,7 +92,7 @@ class UserController extends Controller
         }
         $user->update();
         $user->syncRoles($request->roles);
-        return $this->successResponse($user, trans('defaultMessages.users.update_success'));
+        return $this->success(trans('defaultMessages.users.update_success'));
     }
     public function userActive(Request $request, $id){
         $user = User::find($id);

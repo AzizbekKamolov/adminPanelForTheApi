@@ -98,7 +98,7 @@ class AuthController extends Controller
     public function logout()
     {
         \auth()->user()->tokens()->delete();
-        return $this->successResponse("Muvaffaqiyatli tizimidan chiqdingiz");
+        return $this->success("Muvaffaqiyatli tizimidan chiqdingiz");
     }
     public function refreshToken(Request $request)
     {
