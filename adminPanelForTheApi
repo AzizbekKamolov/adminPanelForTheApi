@@ -1,0 +1,3112 @@
+{
+	"info": {
+		"_postman_id": "05108d55-db74-45c5-93e1-680caef40d12",
+		"name": "BLGFIRM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24140694",
+		"_collection_link": "https://blue-resonance-513528.postman.co/workspace/My-Workspace~baab5e84-7062-4497-8812-bd522d52a05c/collection/24140694-05108d55-db74-45c5-93e1-680caef40d12?action=share&source=collection_link&creator=24140694"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"last_name\" : \"admin\",\r\n    \"first_name\" : \"admin\",\r\n    \"middle_name\" : \"admin\",\r\n    \"phone_number\": \"934622420\",\r\n    \"password\": \"admin123\",\r\n    \"confirmation_password\": \"admin123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 06:11:22 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 13 Nov 2023 06:11:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "statusCode",
+									"value": "422"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"data\": {\n        \"errors\": {\n            \"first_name\": [\n                \"The Ism field is required.\"\n            ],\n            \"phone_number\": [\n                \"The phone number field is required.\"\n            ],\n            \"password\": [\n                \"The Parol field is required.\"\n            ],\n            \"confirmation_password\": [\n                \"The confirmation password field is required.\"\n            ]\n        }\n    },\n    \"status\": 0,\n    \"message\": \"error\",\n    \"code\": 422\n}"
+						},
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"last_name\" : \"admin\",\r\n    \"first_name\" : \"admin\",\r\n    \"middle_name\" : \"admin\",\r\n    \"phone_number\": \"934622421\",\r\n    \"password\": \"admin123\",\r\n    \"confirmation_password\": \"admin123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/register",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Nov 2023 05:29:32 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 14 Nov 2023 05:29:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "code",
+									"value": "200"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"phone_number\": \"934622421\",\n        \"first_name\": \"admin\",\n        \"last_name\": \"admin\",\n        \"middle_name\": \"admin\",\n        \"updated_at\": \"2023-11-14T05:29:31.000000Z\",\n        \"created_at\": \"2023-11-14T05:29:31.000000Z\",\n        \"id\": 10,\n        \"token\": \"15|bfjGzaw19wcE17Ew5FRTacM1GPliwVFMZBVRnYXP\"\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept-Language",
+								"value": "en",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "uz",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone_number",
+									"value": "998901111111",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "en",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "uz",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone_number",
+											"value": "934622420",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "admin123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Content",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 Nov 2023 10:47:17 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 15 Nov 2023 10:47:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"errors\": {\n        \"phone_number\": [\n            \"The selected phone number is invalid.\"\n        ]\n    },\n    \"status\": 0,\n    \"message\": \"error\"\n}"
+						}
+					]
+				},
+				{
+					"name": "logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "10.1.1.232:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:16:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:16:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 0,\n    \"message\": \"Siz tizimdan ro'yxatdan o'tmagansiz\"\n}"
+						},
+						{
+							"name": "errorMtehod",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "10.1.1.232:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:17:16 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:17:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 0,\n    \"message\": \"Method xato\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "10.1.1.232:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:18:23 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 16 Nov 2023 06:18:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 1,\n    \"message\": \"Muvaffaqiyatli tizimidan chiqdingiz\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user-details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-details",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-details"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/api/user-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"user-details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "10.1.1.232:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 12:44:09 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Mar 2023 12:44:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "statusCode",
+									"value": "200"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"last_name\": null,\n        \"first_name\": \"Azizbek1\",\n        \"middle_name\": null,\n        \"profession\": null,\n        \"login\": \"azizbek1\",\n        \"email_verified_at\": null,\n        \"created_at\": \"2023-03-13T11:24:18.000000Z\",\n        \"updated_at\": \"2023-03-13T11:24:18.000000Z\",\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"superAdmin\",\n                \"pivot\": {\n                    \"model_id\": 2,\n                    \"role_id\": 1,\n                    \"model_type\": \"App\\\\Models\\\\User\"\n                },\n                \"permissions\": [\n                    {\n                        \"id\": 7,\n                        \"name\": \"user.index\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 7\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"user.show\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 8\n                        }\n                    },\n                    {\n                        \"id\": 9,\n                        \"name\": \"user.store\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"name\": \"user.edit\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 10\n                        }\n                    },\n                    {\n                        \"id\": 11,\n                        \"name\": \"user.update\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 11\n                        }\n                    },\n                    {\n                        \"id\": 12,\n                        \"name\": \"user.delete\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 12\n                        }\n                    },\n                    {\n                        \"id\": 13,\n                        \"name\": \"role.index\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 13\n                        }\n                    },\n                    {\n                        \"id\": 14,\n                        \"name\": \"role.show\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 14\n                        }\n                    },\n                    {\n                        \"id\": 15,\n                        \"name\": \"permission.shows\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 15\n                        }\n                    },\n                    {\n                        \"id\": 16,\n                        \"name\": \"role.edit\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 16\n                        }\n                    },\n                    {\n                        \"id\": 17,\n                        \"name\": \"role.update\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 17\n                        }\n                    },\n                    {\n                        \"id\": 18,\n                        \"name\": \"role.delete\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 18\n                        }\n                    },\n                    {\n                        \"id\": 20,\n                        \"name\": \"role.store\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 20\n                        }\n                    },\n                    {\n                        \"id\": 21,\n                        \"name\": \"user.getPassword\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 21\n                        }\n                    },\n                    {\n                        \"id\": 22,\n                        \"name\": \"term.index\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 22\n                        }\n                    },\n                    {\n                        \"id\": 23,\n                        \"name\": \"term.show\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 23\n                        }\n                    },\n                    {\n                        \"id\": 24,\n                        \"name\": \"term.store\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 24\n                        }\n                    },\n                    {\n                        \"id\": 25,\n                        \"name\": \"term.edit\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 25\n                        }\n                    },\n                    {\n                        \"id\": 26,\n                        \"name\": \"term.update\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 26\n                        }\n                    },\n                    {\n                        \"id\": 27,\n                        \"name\": \"term.delete\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 27\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"success\",\n    \"code\": 200\n}"
+						},
+						{
+							"name": "user-details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user-details",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user-details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 May 2023 06:46:58 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 19 May 2023 06:46:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "statusCode",
+									"value": "200"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"fio\": \"admin\",\n        \"profession\": \"creator\",\n        \"login\": \"admin\",\n        \"organization_id\": null,\n        \"email_verified_at\": null,\n        \"active\": 1,\n        \"created_at\": \"2023-05-18T08:47:48.000000Z\",\n        \"updated_at\": \"2023-05-18T08:47:48.000000Z\",\n        \"permissions\": [\n            \"permission.index\",\n            \"permission.store\",\n            \"permission.edit\",\n            \"permission.update\",\n            \"permission.delete\",\n            \"user.index\",\n            \"user.store\",\n            \"user.edit\",\n            \"user.update\",\n            \"user.delete\",\n            \"user.getPassword\",\n            \"role.index\",\n            \"role.store\",\n            \"role.edit\",\n            \"role.update\",\n            \"role.delete\",\n            \"organization.index\",\n            \"organization.store\",\n            \"organization.edit\",\n            \"organization.update\",\n            \"organization.delete\",\n            \"lang.index\",\n            \"lang.store\",\n            \"lang.edit\",\n            \"lang.update\",\n            \"lang.delete\",\n            \"admin.index\",\n            \"admin.store\",\n            \"admin.edit\",\n            \"admin.update\",\n            \"admin.delete\",\n            \"questionDegree.index\",\n            \"questionDegree.store\",\n            \"questionDegree.edit\",\n            \"questionDegree.update\",\n            \"questionDegree.delete\",\n            \"student.index\",\n            \"student.store\",\n            \"student.edit\",\n            \"student.update\",\n            \"student.delete\",\n            \"group.index\",\n            \"group.store\",\n            \"group.edit\",\n            \"group.update\",\n            \"group.delete\",\n            \"lesson.index\",\n            \"lesson.store\",\n            \"lesson.edit\",\n            \"lesson.update\",\n            \"lesson.delete\",\n            \"chapter.index\",\n            \"chapter.store\",\n            \"chapter.edit\",\n            \"chapter.update\",\n            \"chapter.delete\",\n            \"topic.index\",\n            \"topic.store\",\n            \"topic.edit\",\n            \"topic.update\",\n            \"topic.delete\",\n            \"question.index\",\n            \"question.store\",\n            \"question.edit\",\n            \"question.update\",\n            \"question.delete\",\n            \"exam.index\",\n            \"exam.store\",\n            \"exam.edit\",\n            \"exam.update\",\n            \"exam.delete\"\n        ],\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"superAdmin\",\n                \"pivot\": {\n                    \"model_id\": 1,\n                    \"role_id\": 1,\n                    \"model_type\": \"App\\\\Models\\\\User\"\n                },\n                \"permissions\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"permission.index\",\n                        \"description\": \"Barcha ruxsatlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 1\n                        }\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"permission.store\",\n                        \"description\": \"Ruxsatni Yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 2\n                        }\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"permission.edit\",\n                        \"description\": \"Ruxsatlarni tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 3\n                        }\n                    },\n                    {\n                        \"id\": 4,\n                        \"name\": \"permission.update\",\n                        \"description\": \"Ruxsatlarni yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 4\n                        }\n                    },\n                    {\n                        \"id\": 5,\n                        \"name\": \"permission.delete\",\n                        \"description\": \"Ruxsatlarni o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 5\n                        }\n                    },\n                    {\n                        \"id\": 6,\n                        \"name\": \"user.index\",\n                        \"description\": \"Foydalanuvchilarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 6\n                        }\n                    },\n                    {\n                        \"id\": 7,\n                        \"name\": \"user.store\",\n                        \"description\": \"Foydalanuvchini saqlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 7\n                        }\n                    },\n                    {\n                        \"id\": 8,\n                        \"name\": \"user.edit\",\n                        \"description\": \"Foydalanuvchini tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 8\n                        }\n                    },\n                    {\n                        \"id\": 9,\n                        \"name\": \"user.update\",\n                        \"description\": \"Foydalanuvchini yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 9\n                        }\n                    },\n                    {\n                        \"id\": 10,\n                        \"name\": \"user.delete\",\n                        \"description\": \"Foydalanuvchini o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 10\n                        }\n                    },\n                    {\n                        \"id\": 11,\n                        \"name\": \"user.getPassword\",\n                        \"description\": \"Foydalanuvchi parolini ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 11\n                        }\n                    },\n                    {\n                        \"id\": 12,\n                        \"name\": \"role.index\",\n                        \"description\": \"rollarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 12\n                        }\n                    },\n                    {\n                        \"id\": 13,\n                        \"name\": \"role.store\",\n                        \"description\": \"Rolni yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 13\n                        }\n                    },\n                    {\n                        \"id\": 14,\n                        \"name\": \"role.edit\",\n                        \"description\": \"Rolni tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 14\n                        }\n                    },\n                    {\n                        \"id\": 15,\n                        \"name\": \"role.update\",\n                        \"description\": \"Rolni yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 15\n                        }\n                    },\n                    {\n                        \"id\": 16,\n                        \"name\": \"role.delete\",\n                        \"description\": \"Rolni o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 16\n                        }\n                    },\n                    {\n                        \"id\": 17,\n                        \"name\": \"organization.index\",\n                        \"description\": \"Tashkilotlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 17\n                        }\n                    },\n                    {\n                        \"id\": 18,\n                        \"name\": \"organization.store\",\n                        \"description\": \"Tashkilot yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 18\n                        }\n                    },\n                    {\n                        \"id\": 19,\n                        \"name\": \"organization.edit\",\n                        \"description\": \"Tashkilot tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 19\n                        }\n                    },\n                    {\n                        \"id\": 20,\n                        \"name\": \"organization.update\",\n                        \"description\": \"Tashkilot yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 20\n                        }\n                    },\n                    {\n                        \"id\": 21,\n                        \"name\": \"organization.delete\",\n                        \"description\": \"Tashkilot o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 21\n                        }\n                    },\n                    {\n                        \"id\": 22,\n                        \"name\": \"lang.index\",\n                        \"description\": \"Savol tillarini ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 22\n                        }\n                    },\n                    {\n                        \"id\": 23,\n                        \"name\": \"lang.store\",\n                        \"description\": \"Savol tili yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 23\n                        }\n                    },\n                    {\n                        \"id\": 24,\n                        \"name\": \"lang.edit\",\n                        \"description\": \"Savol tili tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 24\n                        }\n                    },\n                    {\n                        \"id\": 25,\n                        \"name\": \"lang.update\",\n                        \"description\": \"Savol tili yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 25\n                        }\n                    },\n                    {\n                        \"id\": 26,\n                        \"name\": \"lang.delete\",\n                        \"description\": \"Savol tili o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 26\n                        }\n                    },\n                    {\n                        \"id\": 27,\n                        \"name\": \"admin.index\",\n                        \"description\": \"Tashkilot adminlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 27\n                        }\n                    },\n                    {\n                        \"id\": 28,\n                        \"name\": \"admin.store\",\n                        \"description\": \"Tashkilot admini yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 28\n                        }\n                    },\n                    {\n                        \"id\": 29,\n                        \"name\": \"admin.edit\",\n                        \"description\": \"Tashkilot admini tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 29\n                        }\n                    },\n                    {\n                        \"id\": 30,\n                        \"name\": \"admin.update\",\n                        \"description\": \"Tashkilot admini yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 30\n                        }\n                    },\n                    {\n                        \"id\": 31,\n                        \"name\": \"admin.delete\",\n                        \"description\": \"Tashkilot admini o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 31\n                        }\n                    },\n                    {\n                        \"id\": 32,\n                        \"name\": \"questionDegree.index\",\n                        \"description\": \"Savol tillarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 32\n                        }\n                    },\n                    {\n                        \"id\": 33,\n                        \"name\": \"questionDegree.store\",\n                        \"description\": \"Savol tili yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 33\n                        }\n                    },\n                    {\n                        \"id\": 34,\n                        \"name\": \"questionDegree.edit\",\n                        \"description\": \"Savol tili tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 34\n                        }\n                    },\n                    {\n                        \"id\": 35,\n                        \"name\": \"questionDegree.update\",\n                        \"description\": \"Savol tili yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 35\n                        }\n                    },\n                    {\n                        \"id\": 36,\n                        \"name\": \"questionDegree.delete\",\n                        \"description\": \"Savol tili o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 36\n                        }\n                    },\n                    {\n                        \"id\": 37,\n                        \"name\": \"student.index\",\n                        \"description\": \"Talabalarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 37\n                        }\n                    },\n                    {\n                        \"id\": 38,\n                        \"name\": \"student.store\",\n                        \"description\": \"Talaba yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 38\n                        }\n                    },\n                    {\n                        \"id\": 39,\n                        \"name\": \"student.edit\",\n                        \"description\": \"Talaba tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 39\n                        }\n                    },\n                    {\n                        \"id\": 40,\n                        \"name\": \"student.update\",\n                        \"description\": \"Talaba yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 40\n                        }\n                    },\n                    {\n                        \"id\": 41,\n                        \"name\": \"student.delete\",\n                        \"description\": \"Talaba o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 41\n                        }\n                    },\n                    {\n                        \"id\": 42,\n                        \"name\": \"group.index\",\n                        \"description\": \"Guruhlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 42\n                        }\n                    },\n                    {\n                        \"id\": 43,\n                        \"name\": \"group.store\",\n                        \"description\": \"Guruh yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 43\n                        }\n                    },\n                    {\n                        \"id\": 44,\n                        \"name\": \"group.edit\",\n                        \"description\": \"Guruh tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 44\n                        }\n                    },\n                    {\n                        \"id\": 45,\n                        \"name\": \"group.update\",\n                        \"description\": \"Guruh yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 45\n                        }\n                    },\n                    {\n                        \"id\": 46,\n                        \"name\": \"group.delete\",\n                        \"description\": \"Guruh o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 46\n                        }\n                    },\n                    {\n                        \"id\": 47,\n                        \"name\": \"lesson.index\",\n                        \"description\": \"Fanlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 47\n                        }\n                    },\n                    {\n                        \"id\": 48,\n                        \"name\": \"lesson.store\",\n                        \"description\": \"Fan yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 48\n                        }\n                    },\n                    {\n                        \"id\": 49,\n                        \"name\": \"lesson.edit\",\n                        \"description\": \"Fan tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 49\n                        }\n                    },\n                    {\n                        \"id\": 50,\n                        \"name\": \"lesson.update\",\n                        \"description\": \"Fan yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 50\n                        }\n                    },\n                    {\n                        \"id\": 51,\n                        \"name\": \"lesson.delete\",\n                        \"description\": \"Fan o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 51\n                        }\n                    },\n                    {\n                        \"id\": 52,\n                        \"name\": \"chapter.index\",\n                        \"description\": \"Boblarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 52\n                        }\n                    },\n                    {\n                        \"id\": 53,\n                        \"name\": \"chapter.store\",\n                        \"description\": \"Bob yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 53\n                        }\n                    },\n                    {\n                        \"id\": 54,\n                        \"name\": \"chapter.edit\",\n                        \"description\": \"Bob tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 54\n                        }\n                    },\n                    {\n                        \"id\": 55,\n                        \"name\": \"chapter.update\",\n                        \"description\": \"Bob yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 55\n                        }\n                    },\n                    {\n                        \"id\": 56,\n                        \"name\": \"chapter.delete\",\n                        \"description\": \"Bob o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 56\n                        }\n                    },\n                    {\n                        \"id\": 57,\n                        \"name\": \"topic.index\",\n                        \"description\": \"Mavzularni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 57\n                        }\n                    },\n                    {\n                        \"id\": 58,\n                        \"name\": \"topic.store\",\n                        \"description\": \"Mavzu yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 58\n                        }\n                    },\n                    {\n                        \"id\": 59,\n                        \"name\": \"topic.edit\",\n                        \"description\": \"Mavzu tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 59\n                        }\n                    },\n                    {\n                        \"id\": 60,\n                        \"name\": \"topic.update\",\n                        \"description\": \"Mavzu yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 60\n                        }\n                    },\n                    {\n                        \"id\": 61,\n                        \"name\": \"topic.delete\",\n                        \"description\": \"Mavzu o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 61\n                        }\n                    },\n                    {\n                        \"id\": 62,\n                        \"name\": \"question.index\",\n                        \"description\": \"Savollarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 62\n                        }\n                    },\n                    {\n                        \"id\": 63,\n                        \"name\": \"question.store\",\n                        \"description\": \"Savol yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 63\n                        }\n                    },\n                    {\n                        \"id\": 64,\n                        \"name\": \"question.edit\",\n                        \"description\": \"Savol tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 64\n                        }\n                    },\n                    {\n                        \"id\": 65,\n                        \"name\": \"question.update\",\n                        \"description\": \"Savol yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 65\n                        }\n                    },\n                    {\n                        \"id\": 66,\n                        \"name\": \"question.delete\",\n                        \"description\": \"Savol o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 66\n                        }\n                    },\n                    {\n                        \"id\": 67,\n                        \"name\": \"exam.index\",\n                        \"description\": \"Imtihonlarni ko'rish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 67\n                        }\n                    },\n                    {\n                        \"id\": 68,\n                        \"name\": \"exam.store\",\n                        \"description\": \"Imtihon yaratish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 68\n                        }\n                    },\n                    {\n                        \"id\": 69,\n                        \"name\": \"exam.edit\",\n                        \"description\": \"Imtihon tahrirlash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 69\n                        }\n                    },\n                    {\n                        \"id\": 70,\n                        \"name\": \"exam.update\",\n                        \"description\": \"Imtihon yangilash\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 70\n                        }\n                    },\n                    {\n                        \"id\": 71,\n                        \"name\": \"exam.delete\",\n                        \"description\": \"Imtihon o'chirish\",\n                        \"pivot\": {\n                            \"role_id\": 1,\n                            \"permission_id\": 71\n                        }\n                    }\n                ]\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"success\",\n    \"code\": 200\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Managment system",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										},
+										{
+											"key": "per_page",
+											"value": "all",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/users",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"users"
+											],
+											"query": [
+												{
+													"key": "per_page",
+													"value": "1",
+													"disabled": true
+												},
+												{
+													"key": "per_page",
+													"value": "all",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 05:58:57 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 05:58:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"current_page\": 1,\n        \"data\": [\n            {\n                \"id\": 1,\n                \"first_name\": \"Admin\",\n                \"last_name\": \"Admin\",\n                \"middle_name\": null,\n                \"active\": 1,\n                \"roles\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"superAdmin\",\n                        \"pivot\": {\n                            \"model_id\": 1,\n                            \"role_id\": 1,\n                            \"model_type\": \"App\\\\Models\\\\User\"\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 2,\n                \"first_name\": \"Admin\",\n                \"last_name\": null,\n                \"middle_name\": null,\n                \"active\": 1,\n                \"roles\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"superAdmin\",\n                        \"pivot\": {\n                            \"model_id\": 2,\n                            \"role_id\": 1,\n                            \"model_type\": \"App\\\\Models\\\\User\"\n                        }\n                    }\n                ]\n            },\n            {\n                \"id\": 3,\n                \"first_name\": \"Admin\",\n                \"last_name\": null,\n                \"middle_name\": null,\n                \"active\": 1,\n                \"roles\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"superAdmin\",\n                        \"pivot\": {\n                            \"model_id\": 3,\n                            \"role_id\": 1,\n                            \"model_type\": \"App\\\\Models\\\\User\"\n                        }\n                    }\n                ]\n            }\n        ],\n        \"first_page_url\": \"http://10.1.1.232:8000/api/users?page=1\",\n        \"from\": 1,\n        \"last_page\": 1,\n        \"last_page_url\": \"http://10.1.1.232:8000/api/users?page=1\",\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"pagination.previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://10.1.1.232:8000/api/users?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"pagination.next\",\n                \"active\": false\n            }\n        ],\n        \"next_page_url\": null,\n        \"path\": \"http://10.1.1.232:8000/api/users\",\n        \"per_page\": 15,\n        \"prev_page_url\": null,\n        \"to\": 3,\n        \"total\": 3\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "rU",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"Admin\",\r\n    \"phone_number\": \"admin1234\",\r\n    \"password\": \"admin123\",\r\n    \"roles\": [\r\n        1\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Language",
+												"value": "rU",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"Admin\",\r\n    \"phone_number\": \"admin1234\",\r\n    \"password\": \"admin123\",\r\n    \"roles\": [\r\n        1\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 05:59:28 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 05:59:28 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": {\n        \"phone_number\": [\n            \"phone number maydonining bunday qiymati mavjud. Iltimos boshqa qiymat kiriting.\"\n        ]\n    },\n    \"status\": 0,\n    \"message\": \"error\"\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Language",
+												"value": "rU",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"Admin\",\r\n    \"phone_number\": \"admin12\",\r\n    \"password\": \"admin123\",\r\n    \"roles\": [\r\n        1\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:00:20 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:00:20 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 1,\n    \"message\": \"Foydalanuvchi muvaffaqiyatli yaratildi\"\n}"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:00:35 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:00:35 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"last_name\": \"Admin\",\n        \"first_name\": \"Admin\",\n        \"middle_name\": null,\n        \"phone_number\": \"998901111111\",\n        \"email_verified_at\": null,\n        \"active\": 1,\n        \"created_at\": \"2023-11-15T10:46:37.000000Z\",\n        \"updated_at\": \"2023-11-15T10:46:37.000000Z\",\n        \"roles\": [\n            {\n                \"id\": 1,\n                \"name\": \"superAdmin\",\n                \"guard_name\": \"api\",\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"model_id\": 1,\n                    \"role_id\": 1,\n                    \"model_type\": \"App\\\\Models\\\\User\"\n                }\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"ilhom\",\r\n    \"phone_number\": \"ilhom\",\r\n    \"password\": \"ilhom\",\r\n    \"roles\": [\r\n        2\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"ilhom\",\r\n    \"phone_number\": \"ilhom\",\r\n    \"password\": \"ilhom\",\r\n    \"roles\": [\r\n        2\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:10 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:10 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 1,\n    \"message\": \"Foydalanuvchi muvaffaqiyatli yangilandi\"\n}"
+								},
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"ilhom\",\r\n    \"phone_number\": \"admin12\",\r\n    \"password\": \"ilhom\",\r\n    \"roles\": [\r\n        2\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"3"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:41 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:41 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": {\n        \"phone_number\": [\n            \"phone number maydonining bunday qiymati mavjud. Iltimos boshqa qiymat kiriting.\"\n        ]\n    },\n    \"status\": 0,\n    \"message\": \"error\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:58 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:01:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 1,\n    \"message\": \"Foydalanuvchi muvaffaqiyatli o'chirildi\"\n}"
+								},
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/user/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user",
+												"3"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:09 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:09 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 0,\n    \"message\": \"Foydalanuvchi topilmadi\"\n}"
+								}
+							]
+						},
+						{
+							"name": "getPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "uz",
+										"type": "text"
+									},
+									{
+										"key": "Accept-Language",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/get-password/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"get-password",
+										"11"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "uz",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Language",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{url}}/get-password/2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"get-password",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:26 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:26 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"password\": \"admin123\"\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								},
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "uz",
+												"type": "text"
+											},
+											{
+												"key": "Accept-Language",
+												"value": "",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"url": {
+											"raw": "{{url}}/get-password/22",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"get-password",
+												"22"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:39 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:02:39 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 0,\n    \"message\": \"Foydalanuvchi topilmadi\"\n}"
+								}
+							]
+						},
+						{
+							"name": "get-permissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user-get-permissions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user-get-permissions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "user-active",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ru",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"active\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user-active/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user-active",
+										"11"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ru",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"active\": 0\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/user-active/2",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"user-active",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:03:04 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:03:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"last_name\": null,\n        \"first_name\": \"Admin\",\n        \"middle_name\": null,\n        \"phone_number\": \"admin1234\",\n        \"email_verified_at\": null,\n        \"active\": 0,\n        \"created_at\": \"2023-11-16T05:58:43.000000Z\",\n        \"updated_at\": \"2023-11-16T06:03:04.000000Z\"\n    },\n    \"status\": 1,\n    \"message\": \"Пользователь успешно обновлен\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Roles",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/roles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"roles"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/roles",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"roles"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:03:58 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:03:58 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"admin\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"simpleUser\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"student\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"superAdmin\"\n        }\n    ],\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"student1\",\r\n    \"permissions\": [\r\n        1, 4\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/role",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"role"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"student1\",\r\n    \"permissions\": [\r\n        1, 4\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/role",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:18 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"name\": \"student1\",\n        \"guard_name\": \"api\",\n        \"updated_at\": \"2023-11-16T06:04:18.000000Z\",\n        \"created_at\": \"2023-11-16T06:04:18.000000Z\",\n        \"id\": 5,\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"permission.index\",\n                \"description\": \"Barcha ruxsatlarni ko'rish\",\n                \"guard_name\": \"api\",\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 4,\n                \"name\": \"permission.update\",\n                \"description\": \"Ruxsatlarni yangilash\",\n                \"guard_name\": \"api\",\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 4\n                }\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"Role muvaffaqiyatli yaratildi\"\n}"
+								},
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"student1\",\r\n    \"permissions\": [\r\n        1, 4\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/role",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:34 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:34 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": {\n        \"name\": [\n            \"Ism maydonining bunday qiymati mavjud. Iltimos boshqa qiymat kiriting.\"\n        ]\n    },\n    \"status\": 0,\n    \"message\": \"error\"\n}"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/role/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"role",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/role/5",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:49 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:04:49 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"student1\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"permission.index\",\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 4,\n                \"name\": \"permission.update\",\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 4\n                }\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept-Language",
+										"value": "ru",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"student1\",\r\n    \"permissions\": [\r\n        1, 4\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/role/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"role",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept-Language",
+												"value": "ru",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"student1\",\r\n    \"permissions\": [\r\n        1, 4\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/role/5",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:04 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"student1\",\n        \"guard_name\": \"api\",\n        \"created_at\": \"2023-11-16T06:04:18.000000Z\",\n        \"updated_at\": \"2023-11-16T06:04:18.000000Z\",\n        \"permissions\": [\n            {\n                \"id\": 1,\n                \"name\": \"permission.index\",\n                \"description\": \"Barcha ruxsatlarni ko'rish\",\n                \"guard_name\": \"api\",\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 1\n                }\n            },\n            {\n                \"id\": 4,\n                \"name\": \"permission.update\",\n                \"description\": \"Ruxsatlarni yangilash\",\n                \"guard_name\": \"api\",\n                \"created_at\": null,\n                \"updated_at\": null,\n                \"pivot\": {\n                    \"role_id\": 5,\n                    \"permission_id\": 4\n                }\n            }\n        ]\n    },\n    \"status\": 1,\n    \"message\": \"Роль успешно обновлена\"\n}"
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/role/5",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"role",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/role/6",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role",
+												"6"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:15 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:15 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 0,\n    \"message\": \"Role topilmadi\"\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/role/5",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"role",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:25 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:05:25 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"student1\",\n        \"guard_name\": \"api\",\n        \"created_at\": \"2023-11-16T06:04:18.000000Z\",\n        \"updated_at\": \"2023-11-16T06:04:18.000000Z\"\n    },\n    \"status\": 1,\n    \"message\": \"Role muvaffaqiyatli o'chirildi\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Permissions",
+					"item": [
+						{
+							"name": "getPermissions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/permissions",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"permissions"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/permissions",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permissions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:04 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:04 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 5,\n            \"name\": \"permission.delete\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"permission.edit\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"permission.index\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"permission.store\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"permission.update\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"role.delete\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"role.edit\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"role.index\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"role.store\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"role.update\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"user.delete\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"user.edit\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"user.getPassword\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"user.index\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"user.store\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"user.update\"\n        }\n    ],\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "createPermission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"question.index\",\r\n    \"description\":\"description\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/permission",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"permission"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"question.index\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/permission",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Nov 2023 10:33:45 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Nov 2023 10:33:45 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"name\": \"question.index\",\n        \"guard_name\": \"api\",\n        \"updated_at\": \"2023-11-15T10:33:45.000000Z\",\n        \"created_at\": \"2023-11-15T10:33:45.000000Z\",\n        \"id\": 17\n    },\n    \"status\": 1,\n    \"message\": \"Ruxsat muvaffaqiyatli yaratildi\"\n}"
+								},
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"question.index\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/permission",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission"
+											]
+										}
+									},
+									"status": "Unprocessable Content",
+									"code": 422,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Nov 2023 10:34:05 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 15 Nov 2023 10:34:05 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"errors\": {\n        \"name\": [\n            \"Ism maydonining bunday qiymati mavjud. Iltimos boshqa qiymat kiriting.\"\n        ]\n    },\n    \"status\": 0,\n    \"message\": \"error\"\n}"
+								}
+							]
+						},
+						{
+							"name": "getOnePermission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/permission/18",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"permission",
+										"18"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/permission/18",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission",
+												"18"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:18 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:18 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 0,\n    \"message\": \"Ruxsat topilmadi\"\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/permission/10",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission",
+												"10"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:36 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:36 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 10,\n        \"name\": \"user.delete\",\n        \"description\": \"Foydalanuvchini o'chirish\",\n        \"guard_name\": \"api\",\n        \"created_at\": null,\n        \"updated_at\": null\n    },\n    \"status\": 1,\n    \"message\": \"success\"\n}"
+								}
+							]
+						},
+						{
+							"name": "updatePermission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"offeredTerm.check\",\r\n    \"description\":\"yangi ruxsat\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/permission/17",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"permission",
+										"17"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"offeredTerm.check\",\r\n    \"description\":\"yangi ruxsat\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/permission/17",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission",
+												"17"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:57 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:15:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "54"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 17,\n        \"name\": \"offeredTerm.check\",\n        \"description\": \"yangi ruxsat\",\n        \"guard_name\": \"api\",\n        \"created_at\": \"2023-11-16T06:15:51.000000Z\",\n        \"updated_at\": \"2023-11-16T06:15:57.000000Z\"\n    },\n    \"status\": 1,\n    \"message\": \"Ruxsat muvaffaqiyatli yangilandi\"\n}"
+								}
+							]
+						},
+						{
+							"name": "deletePermission",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/permission/18",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"permission",
+										"18"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/permission/18",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission",
+												"18"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:16:07 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:16:07 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 0,\n    \"message\": \"Ruxsat topilmadi\"\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/permission/17",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"permission",
+												"17"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "10.1.1.232:8000"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:16:30 GMT"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 16 Nov 2023 06:16:30 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": 1,\n    \"message\": \"Ruxsat muvaffaqiyatli o'chirildi\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "10.1.1.232:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "3|Z3lQbJTjgNDtzDSQJeMXjdAsxmofnwYVziA3iqYQ",
+			"type": "string"
+		}
+	]
+}
