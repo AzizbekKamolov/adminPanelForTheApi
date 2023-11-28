@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin\Management;
+namespace App\Http\Controllers\Admin\Management;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\UserPassword;
+use App\Models\Management\UserPassword;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;

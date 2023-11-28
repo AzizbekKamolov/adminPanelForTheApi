@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Admin\UserPassword;
+use App\Models\Management\UserPassword;
 use App\Models\Pages\Offer;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

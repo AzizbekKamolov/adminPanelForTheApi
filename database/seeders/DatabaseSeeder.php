@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\Role;
+use App\Models\Management\Role;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('permissions')->insert(config('myVariables.permissions'));
         DB::table('roles')->insert(config('myVariables.roles'));
         $role = Role::query()->where('name', 'superAdmin')->first();
-        $permission = \App\Models\Admin\Permission::query()->select('id')->get()->toArray();
+        $permission = \App\Models\Management\Permission::query()->select('id')->get()->toArray();
         $role->syncPermissions($permission);
         User::query()->create([
            "first_name" => "Admin",
