@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Admin;
+namespace App\Http\Controllers\Api\Admin\Management;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Role;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Validator;
 class RoleController extends Controller
 {
     public function index(){
-        $roles = Role::select('id', 'name')->orderBy('name', 'ASC')
+        $roles = Role::query()->select('id', 'name')->orderBy('name', 'ASC')
 //            ->with('permissions:id,name')
             ->get();
         return $this->successResponse($roles);
